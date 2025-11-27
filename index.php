@@ -51,7 +51,6 @@ require 'lib/SMTP.php';
 
 $mail = new PHPMailer(true);
 
-
 if (isset($_POST["sendMail"])) {
   //  Get email and generate a random token
   $email = $_POST['email'];
@@ -72,7 +71,7 @@ if (isset($_POST["sendMail"])) {
 
     if ($rq) {
       //  Prepare and send the password reset email
-      $resetUrl = "http://" . $_SERVER['HTTP_HOST'] . "/college-sem-5-main/change-password.php?token=$token";
+      $resetUrl = "http://" . $_SERVER['HTTP_HOST'] . "/blogging-website/change-password.php?token=$token";
 
       // Set up PHPMailer
       $mail->isSMTP();
@@ -163,20 +162,19 @@ include "./alert_message.php";
             <div class="text-center">
               <h4 class="mb-3 fw-semibold text-brand">Welcome back</h4>
             </div>
-            <!-- <h1 class="h3 mb-3 fw-bold">Please sign in</h1> -->
 
             <div class="form-floating my-2">
-              <input type="text" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-              <label for="floatingInput">Enter Email</label>
+              <input type="text" name="email" class="form-control" id="email" placeholder="name@example.com">
+              <label for="email">Enter Email</label>
               <div class="invalid-feedback" id="loginEmailError"></div>
             </div>
             <div class="form-floating my-2">
-              <input type="password" name="passwd" class="form-control" id="floatingPassword" placeholder="Password">
-              <label for="floatingPassword">Enter Password</label>
+              <input type="password" name="passwd" class="form-control" id="password" placeholder="Password">
+              <label for="password">Enter Password</label>
               <div class="invalid-feedback" id="loginPasswordError"></div>
             </div>
-            <small class="text-end d-block"><a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                href="javascript:void(0)">Forgot password?</a></small>
+            <small class="text-end d-block"><a data-bs-toggle="modal" data-bs-target="#exampleModal" href="">Forgot
+                password</a></small>
             <button class="btn btn-custom w-100 py-2 my-3" name="submit" type="submit">Log in</button>
             <div class="text-center">
               <small>Don't have an account? &nbsp;<a href="./signup.php">Sign Up</a></small>
@@ -186,10 +184,6 @@ include "./alert_message.php";
       </div>
     </div>
   </div>
-
-
-
-
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -223,20 +217,23 @@ include "./alert_message.php";
       clearLoginErrors();
 
       // Validate email
-      const email = document.getElementById('floatingInput').value.trim();
+      const email = document.getElementById('email').value.trim();
+
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
       if (email === '') {
-        showLoginError('floatingInput', 'loginEmailError', 'Email is required');
+        showLoginError('email', 'loginEmailError', 'Email is required');
         isValid = false;
       } else if (!emailRegex.test(email)) {
-        showLoginError('floatingInput', 'loginEmailError', 'Please enter a valid email address');
+        showLoginError('email', 'loginEmailError', 'Please enter a valid email address');
         isValid = false;
       }
 
       // Validate password
-      const password = document.getElementById('floatingPassword').value;
+      const password = document.getElementById('password').value;
+
       if (password === '') {
-        showLoginError('floatingPassword', 'loginPasswordError', 'Password is required');
+        showLoginError('password', 'loginPasswordError', 'Password is required');
         isValid = false;
       }
 
@@ -272,7 +269,7 @@ include "./alert_message.php";
     }
 
     function clearLoginErrors() {
-      const inputs = ['floatingInput', 'floatingPassword'];
+      const inputs = ['email', 'password'];
       const errors = ['loginEmailError', 'loginPasswordError'];
 
       inputs.forEach(inputId => {
@@ -287,7 +284,7 @@ include "./alert_message.php";
     }
 
     // Real-time validation for login form
-    document.getElementById('floatingInput').addEventListener('input', function () {
+    document.getElementById('email').addEventListener('input', function () {
       if (this.classList.contains('is-invalid')) {
         const email = this.value.trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -298,7 +295,7 @@ include "./alert_message.php";
       }
     });
 
-    document.getElementById('floatingPassword').addEventListener('input', function () {
+    document.getElementById('password').addEventListener('input', function () {
       if (this.classList.contains('is-invalid')) {
         const password = this.value;
 
