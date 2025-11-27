@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 400;
+    background: #f0f3f6;
+    color: #3a3a3a;
+}
+
+hr {
+    margin: 20px 0;
+    border: none;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+
+img {
+    border-radius: 10px;
+    max-width: 100%;
+    display: block;
+    vertical-align: middle;
+}
+
+
+
+/* ******************* Main Styeles : Radio Card */
+label.radio-card {
+    cursor: pointer;
+}
+
+label.radio-card .card-content-wrapper {
+    background: linear-gradient(-45deg, #88ffe9 0%, #ffffff 100%);
+    border-radius: 5px;
+    max-width: 280px;
+    min-height: 300px;
+    padding: 15px;
+    display: grid;
+    box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0.04);
+    transition: 200ms linear;
+}
+
+label.radio-card .check-icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border: solid 2px #e3e3e3;
+    border-radius: 50%;
+    transition: 200ms linear;
+    position: relative;
+}
+
+label.radio-card .check-icon i {
+    margin-top: 2px;
+    display: flex;
+    color: transparent;
+}
+
+label.radio-card input[type=radio] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+label.radio-card input[type=radio]:checked+.card-content-wrapper {
+    box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0.5), 0 0 0 2px #02917b;
+}
+
+label.radio-card input[type=radio]:checked+.card-content-wrapper .check-icon {
+    background: #30a08e;
+    border-color: #30a08e;
+    transform: scale(1.2);
+}
+
+label.radio-card input[type=radio]:checked+.card-content-wrapper .check-icon i {
+
+    color: white;
+    display: flex;
+}
+
+label.radio-card input[type=radio]:checked+.card-content-wrapper .check-icon:before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+label.radio-card input[type=radio]:focus+.card-content-wrapper .check-icon {
+    box-shadow: 0 0 0 4px rgba(48, 213, 166, 0.2);
+    border-color: #30a08e;
+}
+
+label.radio-card .card-content img {
+    margin-bottom: 10px;
+}
+
+label.radio-card .card-content h4 {
+    font-size: 16px;
+    letter-spacing: -0.24px;
+    text-align: center;
+    color: #14584d;
+    margin-bottom: 10px;
+}
+
+label.radio-card .card-content h5 {
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
+    color: #686d73;
+}

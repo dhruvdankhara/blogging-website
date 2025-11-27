@@ -1,0 +1,72 @@
+.comment {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+h5 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.btn.dropdown {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #666;
+}
+
+.content p {
+    margin: 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.comment-time {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.btn.delete-comment {
+    margin-top: 10px;
+    padding: 6px 12px;
+    font-size: 1em;
+}
+.comment-form {
+    margin-bottom: 20px;
+}
+
+.comment-enter-details {
+    width: 100%;
+    height: 100px;
+    resize: vertical;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
