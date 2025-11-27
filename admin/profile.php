@@ -206,7 +206,7 @@
             </div>
 
             <div class="col-lg-8">
-                <!-- 1. Update Profile Details -->
+                <!-- Update Profile Details -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-header bg-transparent border-0 py-3">
                         <h5 class="mb-0"><i class="bi bi-person me-2"></i>Profile Details</h5>
@@ -235,7 +235,7 @@
                     </div>
                 </div>
 
-                <!-- 2. Change Password -->
+                <!-- Change Password -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-header bg-transparent border-0 py-3">
                         <h5 class="mb-0"><i class="bi bi-lock me-2"></i>Change Password</h5>
@@ -272,7 +272,7 @@
                     </div>
                 </div>
 
-                <!-- 3. Update Profile Photo -->
+                <!-- pdate Profile Photo -->
                 <div class="card border-0 shadow-sm">
                     <div class="card-header bg-transparent border-0 py-3">
                         <h5 class="mb-0"><i class="bi bi-image me-2"></i>Profile Photo</h5>
@@ -415,4 +415,3 @@
 </body>
 
 </html>
-```

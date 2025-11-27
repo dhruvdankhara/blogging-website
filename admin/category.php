@@ -70,7 +70,7 @@ include "../alert_message.php";
           <h3 class="my-3 float-start">Blog Category Information</h3>
           <div class="btn btn-primary float-end" data-bs-toggle='modal' data-bs-target='#edit-category-modal'>Add
             category</div>
-          <!-- Table with stripped rows -->
+          
           <table class="table table-striped text-center">
             <thead>
               <tr>
@@ -137,9 +137,9 @@ include "../alert_message.php";
 
             </tbody>
           </table>
-          <!-- End Table with stripped rows -->
+          
         </div>
-      </div> <!-- Left side columns -->
+      </div> 
     </div>
     <div class='modal fade' id='edit-category-modal' style='display: none;' aria-hidden='true'>
       <div class='modal-dialog modal-dialog-centered'>
@@ -150,7 +150,7 @@ include "../alert_message.php";
           </div>
           <form method="post" id='edit-form'>
             <div class='modal-body'>
-              <!-- <input class='form-control' type='hidden' name='category_id'> -->
+              
               <div class='form-group row'>
                 <div class="col-4">
                   <label for='full_name'>Category Name</label>
@@ -169,4 +169,4 @@ include "../alert_message.php";
       </div>
     </div>
   </section>
-</main><!-- End #main -->
+</main>

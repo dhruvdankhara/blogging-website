@@ -185,9 +185,9 @@ include "../alert_message.php";
                             </tbody>
                         </table>
                     </div>
-                    <!-- End Table with stripped rows -->
+                    
                 </div>
-            </div> <!-- Left side columns -->
+            </div> 
         </div>
         <div class='modal fade' id='edit-package-modal' style='display: none;' aria-hidden='true'>
             <div class='modal-dialog modal-dialog-centered'>
@@ -198,7 +198,7 @@ include "../alert_message.php";
                     </div>
                     <form method="post" id='edit-form'>
                         <div class='modal-body'>
-                            <!-- <input class='form-control' type='hidden' name='package_id'> -->
+                            
                             <div class='form-group row'>
                                 <div class="col-4">
                                     <label for='package_Name'>Package Name</label>
@@ -233,4 +233,4 @@ include "../alert_message.php";
             </div>
         </div>
     </section>
-</main><!-- End #main -->
+</main>

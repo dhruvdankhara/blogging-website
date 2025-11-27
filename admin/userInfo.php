@@ -91,35 +91,35 @@ if (isset($_POST["delete"]) && isset($_POST["user_id"])) {
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
     
-    // Step 1: Delete all campaigns associated with this user's posts
+    // Delete all campaigns associated with this user's posts
     $delete_campaigns_query = "DELETE FROM campaigns WHERE post_id IN (SELECT post_id FROM blog_posts WHERE user_id = '$user_id')";
     mysqli_query($conn, $delete_campaigns_query);
     
-    // Step 2: Delete all comments on this user's posts (if exists)
+    // Delete all comments on this user's posts (if exists)
     $delete_comments_query = "DELETE FROM comments WHERE post_id IN (SELECT post_id FROM blog_posts WHERE user_id = '$user_id')";
     mysqli_query($conn, $delete_comments_query);
     
-    // Step 3: Delete all comments made BY this user (if exists)
+    // Delete all comments made BY this user (if exists)
     $delete_user_comments_query = "DELETE FROM comments WHERE user_id = '$user_id'";
     mysqli_query($conn, $delete_user_comments_query);
     
-    // Step 4: Delete all likes on this user's posts (if exists)
+    // Delete all likes on this user's posts (if exists)
     $delete_likes_query = "DELETE FROM likes WHERE post_id IN (SELECT post_id FROM blog_posts WHERE user_id = '$user_id')";
     mysqli_query($conn, $delete_likes_query);
     
-    // Step 5: Delete all likes made BY this user (if exists)
+    // Delete all likes made BY this user (if exists)
     $delete_user_likes_query = "DELETE FROM likes WHERE user_id = '$user_id'";
     mysqli_query($conn, $delete_user_likes_query);
     
-    // Step 6: Delete all saved posts related to this user's posts (if exists)
+    // Delete all saved posts related to this user's posts (if exists)
     $delete_saved_query = "DELETE FROM saved_posts WHERE post_id IN (SELECT post_id FROM blog_posts WHERE user_id = '$user_id')";
     mysqli_query($conn, $delete_saved_query);
     
-    // Step 7: Delete all saved posts by this user (if exists)
+    // Delete all saved posts by this user (if exists)
     $delete_user_saved_query = "DELETE FROM saved_posts WHERE user_id = '$user_id'";
     mysqli_query($conn, $delete_user_saved_query);
     
-    // Step 8: Delete all blog posts associated with this user
+    // Delete all blog posts associated with this user
     $delete_posts_query = "DELETE FROM blog_posts WHERE user_id = '$user_id'";
     mysqli_query($conn, $delete_posts_query);
     
@@ -213,6 +213,7 @@ include "../alert_message.php";
                                         </div>
                                     </td>
                                 </tr>
+
                                 <!-- Edit User Modal -->
                                 <div class="modal fade" id="edit-user-modal<?= $i ?>" tabindex="-1" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
@@ -236,13 +237,7 @@ include "../alert_message.php";
                                                             <input class="form-control" type="email" name="email" 
                                                                    value="<?= htmlspecialchars($row["email"]) ?>" required>
                                                         </div>
-                                                        <div class="col-12">
-                                                            <label class="form-label">User Type</label>
-                                                            <select name="user_type" class="form-select" required>
-                                                                <option value="admin" <?= $row["user_type"] == "admin" ? "selected" : "" ?>>Admin</option>
-                                                                <option value="client" <?= $row["user_type"] == "client" ? "selected" : "" ?>>Client</option>
-                                                            </select>
-                                                        </div>
+
                                                         <div class="col-12">
                                                             <label class="form-label">Profile Image</label>
                                                             <input type="file" class="form-control" name="image" accept="image/*" 

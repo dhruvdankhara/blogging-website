@@ -9,7 +9,7 @@ include "./sidebar.php";
   </div>
 
   <div class="row g-3 g-md-4 mb-4">
-    <!-- Statistics Cards -->
+    
     <div class="col-6 col-lg-3">
       <div class="card border-0 shadow-sm h-100">
         <div class="card-body p-3">

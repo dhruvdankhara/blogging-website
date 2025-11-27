@@ -47,7 +47,6 @@ if (isset($_POST["submit"]) && isset($_POST["title"])  && isset($_POST["post_id"
             $filenameRm = "." . $row['image'];
             if (file_exists($filenameRm)) {
               $status = unlink($filenameRm) ? 'The file ' . $filenameRm . ' has been deleted' : 'Error deleting ' . $filenameRm;
-              // echo $status;
             }
           }
         }
@@ -127,7 +126,6 @@ if (isset($_POST["delete"]) && isset($_POST["post_id"])) {
     $filenameRm = "." . $row['image'];
     if (file_exists($filenameRm)) {
       $status = unlink($filenameRm) ? 'The file ' . $filenameRm . ' has been deleted' : 'Error deleting ' . $filenameRm;
-      // echo $status;
     }
   }
   // Delete associated likes first
@@ -164,7 +162,6 @@ include "../alert_message.php";
           <h3 class="my-3 float-start">Post Information</h3>
           <div class="btn btn-primary float-end" data-bs-toggle='modal' data-bs-target='#edit-category-modal'>Add Post
           </div>
-          <!-- Table with stripped rows -->
           <table class="table table-striped text-center">
             <thead>
               <tr>
@@ -243,7 +240,6 @@ include "../alert_message.php";
                             </div>
                             <div class="col-8">
                               <textarea class='form-control' name="content" id="" cols="30" rows="5"><?= $row["content"] ?></textarea>
-                              <!-- <input class='form-control' value="<?= $row["content"] ?>" type='text' name='content'> -->
                             </div>
                           </div>
                           <div class='form-group row '>
@@ -282,7 +278,7 @@ include "../alert_message.php";
                                 var output = document.getElementById('output<?= $i ?>');
                                 output.src = URL.createObjectURL(event.target.files[0]);
                                 output.onload = function() {
-                                  URL.revokeObjectURL(output.src) // free memory
+                                  URL.revokeObjectURL(output.src)
                                 }
                               };
                             </script>
@@ -303,9 +299,8 @@ include "../alert_message.php";
 
             </tbody>
           </table>
-          <!-- End Table with stripped rows -->
         </div>
-      </div> <!-- Left side columns -->
+      </div>
     </div>
     <div class='modal fade' id='edit-category-modal' style='display: none;' aria-hidden='true'>
       <div class='modal-dialog modal-lg modal-dialog-centered'>
@@ -331,7 +326,6 @@ include "../alert_message.php";
                 </div>
                 <div class="col-8">
                   <textarea class='form-control' name="content" id="" cols="30" rows="5"></textarea>
-                  <!-- <input class='form-control'  type='text' name='content'> -->
                 </div>
               </div>
               <div class='form-group row '>
@@ -369,7 +363,7 @@ include "../alert_message.php";
                     var output = document.getElementById('output-save');
                     output.src = URL.createObjectURL(event.target.files[0]);
                     output.onload = function() {
-                      URL.revokeObjectURL(output.src) // free memory
+                      URL.revokeObjectURL(output.src)
                     }
                   };
                 </script>
@@ -384,4 +378,4 @@ include "../alert_message.php";
       </div>
     </div>
   </section>
-</main><!-- End #main -->
+</main>

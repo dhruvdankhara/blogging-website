@@ -3,7 +3,6 @@ include "../connection.php";
 include "./sidebar.php";
 
 if (isset($_POST["submit"]) && isset($_POST["campaign_id"]) && isset($_POST["status"])) {
-  // echo "submit";
 
   $campaign_id = $_POST["campaign_id"];
   $status = $_POST["status"];
@@ -12,7 +11,6 @@ if (isset($_POST["submit"]) && isset($_POST["campaign_id"]) && isset($_POST["sta
     $status
   ) {
     $query = "update  campaigns set  status = '$status' where campaign_id = '$campaign_id'";
-    // echo $query;
     $runquery = mysqli_query($conn, $query);
     if ($runquery) {
       $message[] = array(
@@ -43,7 +41,6 @@ include "../alert_message.php";
           <div class="align-items-center d-flex justify-content-between">
             <h3 class="my-3 float-start">Campaign Post Details</h3>
           </div>
-          <!-- Table with stripped rows -->
           <div class="table-responsive">
             <table class="table table-striped text-center">
               <thead>
@@ -148,9 +145,9 @@ include "../alert_message.php";
               </tbody>
             </table>
           </div>
-          <!-- End Table with stripped rows -->
+
         </div>
-      </div> <!-- Left side columns -->
+      </div>
     </div>
   </section>
-</main><!-- End #main -->≈
+</main>
