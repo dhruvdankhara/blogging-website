@@ -3,34 +3,34 @@ include "./navbar_dash.php";
 $user_id = $_SESSION["user_id"];
 if (isset($_POST["submit"]) && isset($_POST["campaign_id"]) && isset($_POST["status"])) {
     // echo "submit";
-  
+
     $campaign_id = $_POST["campaign_id"];
     $status = $_POST["status"];
-  
+
     if (
-      $status
+        $status
     ) {
-      $query = "update  campaigns set  status = '$status' where campaign_id = '$campaign_id'";
-      // echo $query;
-      $runquery = mysqli_query($conn, $query);
-      if ($runquery) {
-        $message[] = array(
-          'type' => 'Campaign Update',
-          'message' => 'Campaign Update successfully',
-          'icon' => 'success'
-        );
-  
-      }
+        $query = "update  campaigns set  status = '$status' where campaign_id = '$campaign_id'";
+        // echo $query;
+        $runquery = mysqli_query($conn, $query);
+        if ($runquery) {
+            $message[] = array(
+                'type' => 'Campaign Update',
+                'message' => 'Campaign Update successfully',
+                'icon' => 'success'
+            );
+
+        }
     } else {
-      $message[] = array(
-        'icon' => 'error',
-        'type' => 'Error',
-        'message' => 'Enter  valid  Form Information'
-      );
+        $message[] = array(
+            'icon' => 'error',
+            'type' => 'Error',
+            'message' => 'Enter  valid  Form Information'
+        );
     }
-  }
-  
-  include "./alert_message.php";
+}
+
+include "./alert_message.php";
 ?>
 
 <div id="main-container">
@@ -40,7 +40,8 @@ if (isset($_POST["submit"]) && isset($_POST["campaign_id"]) && isset($_POST["sta
             <div class="card">
                 <div class="card-body">
                     <div class="text-end">
-                        <button class="btn btn-outline-success"><a href="./promotion_plans.php"> Add Campaign</a></button>
+                        <button class="btn btn-outline-success"><a href="./promotion_plans.php"> Add
+                                Campaign</a></button>
                     </div>
                     <!-- Table with stripped rows -->
                     <div class="table-responsive">
@@ -62,7 +63,7 @@ if (isset($_POST["submit"]) && isset($_POST["campaign_id"]) && isset($_POST["sta
                                 $result = mysqli_query($conn, $query);
                                 $i = 1;
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                ?>
+                                    ?>
                                     <tr>
                                         <th scope='row'>
                                             <?= $i ?>
@@ -100,28 +101,34 @@ if (isset($_POST["submit"]) && isset($_POST["campaign_id"]) && isset($_POST["sta
                                         </td>
                                         <td>
 
-                                            <button class='btn btn-primary' type="button" data-bs-toggle='modal' data-bs-target='#edit-campaign-modal<?= $i ?>'><i class='bi bi-pencil'></i></button>
+                                            <button class='btn btn-primary' type="button" data-bs-toggle='modal'
+                                                data-bs-target='#edit-campaign-modal<?= $i ?>'><i
+                                                    class='bi bi-pencil'></i></button>
 
                                         </td>
                                     </tr>
-                                    <div class='modal fade' id='edit-campaign-modal<?= $i ?>' tabindex='-1' style='display: none;' aria-hidden='true'>
+                                    <div class='modal fade' id='edit-campaign-modal<?= $i ?>' tabindex='-1'
+                                        style='display: none;' aria-hidden='true'>
                                         <div class='modal-dialog modal-dialog-centered'>
                                             <div class='modal-content'>
                                                 <div class='modal-header'>
                                                     <h5 class='modal-title'>Update Campaign Status(
                                                         <?= $row["name"] ?>)
                                                     </h5>
-                                                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                                    <button type='button' class='btn-close' data-bs-dismiss='modal'
+                                                        aria-label='Close'></button>
                                                 </div>
                                                 <form method="POST" id='edit-form'>
                                                     <div class='modal-body'>
-                                                        <input class='form-control' value="<?= $row["campaign_id"] ?>" type='hidden' name='campaign_id'>
+                                                        <input class='form-control' value="<?= $row["campaign_id"] ?>"
+                                                            type='hidden' name='campaign_id'>
                                                         <div class='form-group row '>
                                                             <div class="col-4">
                                                                 <label for='status'>campaign Status</label>
                                                             </div>
                                                             <div class="col-8">
-                                                                <select name="status"   class="form-control" id="status" value="<?= $row["status"] ?>">
+                                                                <select name="status" class="form-control" id="status"
+                                                                    value="<?= $row["status"] ?>">
                                                                     <option value="running">Running</option>
                                                                     <option value="close">Close</option>
                                                                 </select>
@@ -129,14 +136,16 @@ if (isset($_POST["submit"]) && isset($_POST["campaign_id"]) && isset($_POST["sta
                                                         </div>
                                                     </div>
                                                     <div class='modal-footer'>
-                                                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                                                        <button type='submit' name="submit" class='btn btn-primary'>Save changes</button>
+                                                        <button type='button' class='btn btn-secondary'
+                                                            data-bs-dismiss='modal'>Close</button>
+                                                        <button type='submit' name="submit" class='btn btn-primary'>Save
+                                                            changes</button>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
-                                <?php
+                                    <?php
                                     $i++;
                                 }
                                 ?>
@@ -152,6 +161,3 @@ if (isset($_POST["submit"]) && isset($_POST["campaign_id"]) && isset($_POST["sta
 </div>
 
 <script src="vendor/js/ajex-call.js"></script>
-<div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>

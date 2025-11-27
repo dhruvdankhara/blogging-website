@@ -24,12 +24,9 @@
   }
 
   $loggedin_user = $_SESSION["user_id"];
-
   ?>
 
   <?php
-
-
 
   if (isset($_GET["post_id"])) {
     $post_id = $_GET["post_id"];
@@ -38,7 +35,6 @@
     $runquery = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($runquery) == 1) {
-      // print_r($row);
       $row = mysqli_fetch_assoc($runquery);
       $user_id = $row["user_id"];
       $post_id = $row["post_id"];
@@ -73,10 +69,12 @@
     include "page-not-found.php";
     return;
   }
+
   if (isset($_POST['comment'])) {
     $comment = $_POST['comment'];
     $loggedin_user = $_SESSION["user_id"];
     $post_id = $_GET["post_id"];
+
     // Insert data into the comments table
     $sql = "INSERT INTO comments (	post_id	, 	user_id	, content, created_at	) VALUES ($post_id, $loggedin_user, '$comment', NOW())";
 
@@ -95,13 +93,13 @@
 
     }
   }
+
   if (isset($_POST["save"]) && isset($_POST["post_id"])) {
-    // echo "save submitted";
+
     $post_id = $_POST["post_id"];
     $login_id = $_SESSION["user_id"];
 
     $q = "SELECT * FROM saved_posts WHERE post_id=$post_id AND user_id=$login_id";
-    // echo $q;
     $rq = mysqli_query($conn, $q);
 
     if (mysqli_num_rows($rq) > 0) {
@@ -112,7 +110,7 @@
       );
     } else {
       $q = "INSERT INTO saved_posts(post_id,user_id) VALUES($post_id,$login_id)";
-      // echo $q;
+
       $rq = mysqli_query($conn, $q);
 
       if ($rq) {
@@ -130,7 +128,7 @@
       }
     }
   }
-  
+
   if (isset($_POST["unsave"]) && isset($_POST["post_id"])) {
     // echo "unsave submitted";
     $post_id = $_POST["post_id"];
@@ -156,8 +154,6 @@
   }
 
   include "./alert_message.php";
-
-
 
   ?>
   <link rel="stylesheet" href="vendor\css\comment.css">
@@ -191,52 +187,58 @@
                 $q = "select * from likes where post_id = $post_id and user_id =$loggedin_user ";
                 $rq = mysqli_query($conn, $q);
                 ?>
-                <!-- <a href="like.php?post_id=<?= $post_id ?>" class="me-3" target="_self"> -->
+
                 <div id="icon_<?= $post_id ?>" onclick="likePost(<?= $post_id ?>)">
                   <i
                     class="bi <?= mysqli_num_rows($rq) == 0 ? 'bi-hand-thumbs-up' : 'bi-hand-thumbs-up-fill' ?> fs-3"></i>&nbsp;
                 </div>
+
                 <div id="likeCount_<?= $post_id ?>" class="me-2">
                   <?= $like_count ?>
                 </div>
+
                 <?php
                 // Check if post is already saved
                 $saved_check = "SELECT * FROM saved_posts WHERE post_id=$post_id AND user_id=$loggedin_user";
                 $saved_result = mysqli_query($conn, $saved_check);
                 $is_saved = mysqli_num_rows($saved_result) > 0;
+
                 ?>
+
                 <form action="" method="POST">
                   <input type="hidden" name="post_id" value="<?= $post_id ?>">
                   <?php if ($is_saved) { ?>
-                    <button class="btn btn-sm ms-2" type="submit" name="unsave" style="color: #94cfc4; background-color: #3c463d;">
+                    <button class="btn btn-sm ms-2" type="submit" name="unsave"
+                      style="color: #94cfc4; background-color: #3c463d;">
                       <i class="las la-bookmark fs-3"></i>&nbsp;
                     </button>
+
                   <?php } else { ?>
                     <button class="btn btn-sm btn-custom ms-2" type="submit" name="save">
                       <i class="lar la-bookmark fs-3"></i>&nbsp;
                     </button>
                   <?php } ?>
+
                 </form>
                 <?php
 
                 $comment_count = get_comment_count($post_id, $conn);
 
-
                 function get_comment_count($post_id, $conn)
                 {
-
                   $result = $conn->query("SELECT COUNT(*) FROM comments WHERE post_id = $post_id");
                   $count = $result->fetch_row()[0];
                   return $count;
                 }
                 ?>
-                <!-- Button trigger modal -->
+
                 <button type="button" class="btn btn-primary mx-2" data-bs-toggle="modal"
                   data-bs-target="#exampleModal">
                   <i class="bi bi-chat-dots-fill"></i> <span class="badge bg-secondary">
                     <?= $comment_count ?>
                   </span>
                 </button>
+
                 <!-- Modal -->
                 <div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                   aria-hidden="true">
@@ -269,7 +271,6 @@
 
                         if ($result->num_rows > 0) {
                           while ($row = $result->fetch_assoc()) {
-                            // print_r($row);
                             ?>
                             <div class="comment my-2">
                               <div class="user-banner">
@@ -299,7 +300,7 @@
                               </div>
                             </div>
                             <?php
-                            // echo "Comment ID: " . $row["comment_id"] . " - Post ID: " . $row["post_id"] . " - User ID: " . $row["user_id"] . " - Username: " . $row["name"] . " - Content: " . $row["content"] . " - Created At: " . $row["created_at"] . "<br>";
+
                           }
                         } else {
                           echo "No comments yet";
@@ -335,12 +336,6 @@
       }
     });
   }
-
-
 </script>
 
 </html>
-
-<div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>

@@ -122,6 +122,3 @@ include "./alert_message.php";
 </div>
 
 <script src="vendor/js/ajex-call.js"></script>
-<div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>

@@ -108,8 +108,8 @@
             <div class="card mb-3">
               <div class="row g-0">
                 <div class="col-md-4">
-                  <img src="<?= $result["image"] ?>" onerror="this.src='assets/website_logo-removebg-preview.png'" width="100%" height="100%"
-                    class="img-fluid rounded-start" alt="...">
+                  <img src="<?= $result["image"] ?>" onerror="this.src='assets/website_logo-removebg-preview.png'"
+                    width="100%" height="100%" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
@@ -156,7 +156,3 @@
 </body>
 
 </html>
-
-<div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>

@@ -74,7 +74,8 @@
     <div class="row">
       <div class="col-sm-12 m-auto">
         <div class="form-signin w-100 m-auto ">
-          <form method="post" class="text-center " enctype="multipart/form-data" id="addBlogForm" onsubmit="return validateBlogForm()">
+          <form method="post" class="text-center " enctype="multipart/form-data" id="addBlogForm"
+            onsubmit="return validateBlogForm()">
             <!-- <img class="mt-4 mb-2" src="./assets/website_logo-removebg-preview.png" alt="" width="100"> -->
             <h1 class="h3 mt-4 mb-2 fw-bold text-custom" style="color: black;">Add Blog Post Data</h1>
             <div class="form row">
@@ -85,7 +86,8 @@
                   <div class="invalid-feedback" id="titleError"></div>
                 </div>
                 <div class="form-group my-2">
-                  <textarea type="content" placeholder="Write content here...." name="content" class="form-control" id="contentTextarea" rows="4"></textarea>
+                  <textarea type="content" placeholder="Write content here...." name="content" class="form-control"
+                    id="contentTextarea" rows="4"></textarea>
                   <div class="invalid-feedback" id="contentError"></div>
                 </div>
                 <div class="form-floating my-2">
@@ -198,7 +200,7 @@
                 error.style.display = 'none';
               });
             }
-            document.getElementById('floatingInput').addEventListener('input', function() {
+            document.getElementById('floatingInput').addEventListener('input', function () {
               if (this.classList.contains('is-invalid')) {
                 const title = this.value.trim();
                 if (title !== '' && title.length >= 5 && title.length <= 200) {
@@ -207,7 +209,7 @@
                 }
               }
             });
-            document.getElementById('contentTextarea').addEventListener('input', function() {
+            document.getElementById('contentTextarea').addEventListener('input', function () {
               if (this.classList.contains('is-invalid')) {
                 const content = this.value.trim();
                 if (content !== '' && content.length >= 20 && content.length <= 5000) {
@@ -216,7 +218,7 @@
                 }
               }
             });
-            document.getElementById('file-input').addEventListener('change', function() {
+            document.getElementById('file-input').addEventListener('change', function () {
               if (this.classList.contains('is-invalid')) {
                 const file = this.files[0];
                 if (file) {
@@ -235,7 +237,5 @@
   </div>
 </body>
 
-<div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>
+
 </html>
