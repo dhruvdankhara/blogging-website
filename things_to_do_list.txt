@@ -4,10 +4,6 @@ like behaviour change
 admin side:
 admin can make admin from user
 
-
-
-
-
 ========== Id Password =============
 nayan@example.com       : nayan@123
 utsav@gmail.com         : utsav@123
