@@ -193,8 +193,9 @@
                 <div class="card border-0 shadow-sm">
                     <div class="card-body text-center">
                         <div class="mb-3">
-                            <img src="<?= $row["image"] ?>" onerror="this.src='assets/default-profile.png'" 
-                                 class="rounded-circle" width="120" height="120" style="object-fit: cover;" alt="Profile">
+                            <img src="<?= $row["image"] ?>" onerror="this.src='assets/default-profile.png'"
+                                class="rounded-circle" width="120" height="120" style="object-fit: cover;"
+                                alt="Profile">
                         </div>
                         <h5 class="card-title mb-1"><?= $row["name"] ?></h5>
                         <p class="text-muted small mb-0">User</p>
@@ -222,20 +223,23 @@
                     <div class="card-body">
                         <form method="post">
                             <input type="hidden" name="user_id" value="<?= $user_id ?>">
-                            
+
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Full Name</label>
-                                    <input class="form-control" value="<?= $row["name"] ?>" type="text" required name="username">
+                                    <input class="form-control" value="<?= $row["name"] ?>" type="text" required
+                                        name="username">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Email Address</label>
-                                    <input class="form-control" value="<?= $row["email"] ?>" type="email" required name="email">
+                                    <input class="form-control" value="<?= $row["email"] ?>" type="email" required
+                                        name="email">
                                 </div>
                             </div>
 
                             <div class="mt-3 text-end">
-                                <button type="submit" name="update_profile" class="btn" style="background-color: #0d6efd; color: white;">
+                                <button type="submit" name="update_profile" class="btn"
+                                    style="background-color: #0d6efd; color: white;">
                                     <i class="bi bi-check-lg me-1"></i>Update Profile
                                 </button>
                             </div>
@@ -251,22 +255,25 @@
                     <div class="card-body">
                         <form method="post" id="changePasswordForm">
                             <input type="hidden" name="user_id" value="<?= $user_id ?>">
-                            
+
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <label class="form-label">Current Password</label>
-                                    <input class="form-control" type="password" name="current_password" id="currentPassword" required>
+                                    <input class="form-control" type="password" name="current_password"
+                                        id="currentPassword" required>
                                     <div class="invalid-feedback" id="currentPasswordError"></div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">New Password</label>
-                                    <input class="form-control" type="password" name="new_password" id="newPassword" required>
+                                    <input class="form-control" type="password" name="new_password" id="newPassword"
+                                        required>
                                     <small class="text-muted">Min 6 chars, with uppercase, lowercase & number</small>
                                     <div class="invalid-feedback" id="newPasswordError"></div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Confirm New Password</label>
-                                    <input class="form-control" type="password" name="confirm_password" id="confirmPassword" required>
+                                    <input class="form-control" type="password" name="confirm_password"
+                                        id="confirmPassword" required>
                                     <div class="invalid-feedback" id="confirmPasswordError"></div>
                                 </div>
                             </div>
@@ -288,18 +295,20 @@
                     <div class="card-body">
                         <form method="post" enctype="multipart/form-data">
                             <input type="hidden" name="user_id" value="<?= $user_id ?>">
-                            
+
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <label class="form-label">Choose New Photo</label>
-                                    <input type="file" class="form-control" accept="image/*" name="profile" 
-                                           onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" required>
+                                    <input type="file" class="form-control" accept="image/*" name="profile"
+                                        onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])"
+                                        required>
                                     <small class="text-muted">Allowed: PNG, JPG, JPEG</small>
                                 </div>
                                 <div class="col-12">
                                     <div class="text-center">
-                                        <img class="rounded border" id="output" height="120" width="120" 
-                                             src="<?= $row["image"] ?>" onerror="this.src='assets/default-profile.png'" style="object-fit: cover;">
+                                        <img class="rounded border" id="output" height="120" width="120"
+                                            src="<?= $row["image"] ?>" onerror="this.src='assets/default-profile.png'"
+                                            style="object-fit: cover;">
                                         <p class="small text-muted mt-2">Image preview</p>
                                     </div>
                                 </div>
@@ -319,22 +328,22 @@
 
     <script>
         // Password change form validation
-        document.getElementById('changePasswordForm').addEventListener('submit', function(e) {
+        document.getElementById('changePasswordForm').addEventListener('submit', function (e) {
             let isValid = true;
-            
+
             // Clear previous errors
             clearPasswordErrors();
-            
+
             const currentPassword = document.getElementById('currentPassword').value;
             const newPassword = document.getElementById('newPassword').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
-            
+
             // Validate current password
             if (currentPassword === '') {
                 showPasswordError('currentPassword', 'currentPasswordError', 'Current password is required');
                 isValid = false;
             }
-            
+
             // Validate new password
             if (newPassword === '') {
                 showPasswordError('newPassword', 'newPasswordError', 'New password is required');
@@ -352,7 +361,7 @@
                 showPasswordError('newPassword', 'newPasswordError', 'Password must contain at least one number');
                 isValid = false;
             }
-            
+
             // Validate confirm password
             if (confirmPassword === '') {
                 showPasswordError('confirmPassword', 'confirmPasswordError', 'Please confirm your password');
@@ -361,57 +370,57 @@
                 showPasswordError('confirmPassword', 'confirmPasswordError', 'Passwords do not match');
                 isValid = false;
             }
-            
+
             if (!isValid) {
                 e.preventDefault();
             }
         });
-        
+
         function showPasswordError(inputId, errorId, message) {
             const input = document.getElementById(inputId);
             const error = document.getElementById(errorId);
-            
+
             input.classList.add('is-invalid');
             error.textContent = message;
             error.style.display = 'block';
         }
-        
+
         function clearPasswordErrors() {
             const inputs = ['currentPassword', 'newPassword', 'confirmPassword'];
             const errors = ['currentPasswordError', 'newPasswordError', 'confirmPasswordError'];
-            
+
             inputs.forEach(inputId => {
                 document.getElementById(inputId).classList.remove('is-invalid');
             });
-            
+
             errors.forEach(errorId => {
                 const error = document.getElementById(errorId);
                 error.textContent = '';
                 error.style.display = 'none';
             });
         }
-        
+
         // Real-time validation for new password
-        document.getElementById('newPassword').addEventListener('input', function() {
+        document.getElementById('newPassword').addEventListener('input', function () {
             if (this.classList.contains('is-invalid')) {
                 const password = this.value;
                 const hasLowercase = /(?=.*[a-z])/.test(password);
                 const hasUppercase = /(?=.*[A-Z])/.test(password);
                 const hasNumber = /(?=.*\d)/.test(password);
-                
+
                 if (password !== '' && password.length >= 6 && hasLowercase && hasUppercase && hasNumber) {
                     this.classList.remove('is-invalid');
                     document.getElementById('newPasswordError').style.display = 'none';
                 }
             }
         });
-        
+
         // Real-time validation for confirm password
-        document.getElementById('confirmPassword').addEventListener('input', function() {
+        document.getElementById('confirmPassword').addEventListener('input', function () {
             if (this.classList.contains('is-invalid')) {
                 const newPassword = document.getElementById('newPassword').value;
                 const confirmPassword = this.value;
-                
+
                 if (confirmPassword !== '' && newPassword === confirmPassword) {
                     this.classList.remove('is-invalid');
                     document.getElementById('confirmPasswordError').style.display = 'none';

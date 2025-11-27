@@ -65,5 +65,5 @@ while ($row = mysqli_fetch_assoc($author_result)) {
 }
 
 header('Content-Type: application/json');
-echo json_encode(array_slice($suggestions, 0, 8)); // Limit total suggestions to 8
+echo json_encode(array_slice($suggestions, 0, 8));
 ?>

@@ -51,18 +51,6 @@
   $rq = mysqli_query($conn, $q);
 
   if (mysqli_num_rows($rq) > 0) {
-    while ($row = mysqli_fetch_assoc($rq)) {
-      # code...
-      // print_r($row["post_id"]);
-      // $post_id = $row["post_id"];
-      // $q = "SELECT * FROM blog_posts WHERE post_id IN ($post_id)";
-      // $rq = mysqli_query($conn, $q);
-  
-      // if ($rq) {
-      //   $row = mysqli_fetch_assoc($rq);
-      //   print_r($row);
-      // }
-    }
     $q = "SELECT *
     FROM blog_posts 
     JOIN saved_posts ON blog_posts.post_id = saved_posts.post_id
@@ -76,7 +64,6 @@
     WHERE saved_posts.user_id=$user_id";
     $fetchBlogRunQuery = mysqli_query($conn, $q);
 
-    // echo $count;
   }
   include "./alert_message.php";
 
@@ -98,8 +85,7 @@
         ";
       } else {
         while ($result = mysqli_fetch_assoc($fetchBlogRunQuery)) {
-          // print_r($result);
-      
+
           if ($result["comment_count"] == null) {
             $result["comment_count"] = 0;
           }

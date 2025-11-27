@@ -2,7 +2,6 @@
 include "./navbar_dash.php";
 $user_id = $_SESSION["user_id"];
 if (isset($_POST["submit"]) && isset($_POST["campaign_id"]) && isset($_POST["status"])) {
-    // echo "submit";
 
     $campaign_id = $_POST["campaign_id"];
     $status = $_POST["status"];

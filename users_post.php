@@ -28,20 +28,6 @@
     $category = $_POST["category"];
     $content = $_POST["content"];
 
-    // echo $post_id;
-    // echo "//";
-    // echo $title;
-    // echo "//";
-    // echo $category;
-    // echo "//";
-    // echo $content;
-  
-    // if (
-    //   $post_id &&
-    //   $title &&
-    //   $category &&
-    //   $content
-    // ) {
     if ($_FILES["image"]["name"]) {
       $filename = $_FILES["image"]["name"];
       $tempname = $_FILES["image"]["tmp_name"];
@@ -95,15 +81,6 @@
         $isSuccess = true;
       }
     }
-    // } else {
-    //   echo "unable to update";
-    // $message[] = array(
-    //   'icon' => 'error',
-    //   'type' => 'Blog Post Update',
-    //   'message' => 'Unable to update!'
-    // );
-    // $isSuccess = false;
-    // }
   }
 
   if (isset($_POST["delete"]) && isset($_POST["post_id"])) {
@@ -113,13 +90,9 @@
 
     $record = mysqli_num_rows($runquery);
 
-    // echo $record;
-  
     if ($record == 1) {
       $row = mysqli_fetch_assoc($runquery);
 
-      // echo $row["image"];
-  
       if ($row["image"]) {
         $removeFilename = $row["image"];
         if (file_exists($removeFilename)) {
@@ -262,9 +235,7 @@
                         data-bs-target='#edit-category-modal<?= $result["post_id"] ?>'>Edit</button>
                       <form method="POST" class="ms-3">
                         <input type="hidden" name="post_id" value="<?= $result["post_id"] ?>">
-                        <!-- <button class="btn btn-sm btn-danger" type="button" name="delete">
-                        <a href="delete_users_post.php?delete_id=<?= $result["post_id"] ?>">Delete</a>
-                      </button> -->
+
                         <button class="btn btn-sm btn-danger" type="submit" value="delete" name="delete">Delete</button>
                       </form>
                     </div>

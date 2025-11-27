@@ -64,20 +64,28 @@ $name = $row["name"];
 
         <div class="collapse navbar-collapse" id="mainNavbar">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-pillbar">
-            <li class="nav-item"><a class="nav-link <?= $active === 'dashboard.php' ? 'active' : '' ?>" href="./dashboard.php">Home</a></li>
-            <li class="nav-item"><a class="nav-link <?= $active === 'add_blog.php' ? 'active' : '' ?>" href="./add_blog.php">Write Post</a></li>
-            <li class="nav-item"><a class="nav-link <?= $active === 'campaign_view_user.php' ? 'active' : '' ?>" href="./campaign_view_user.php">Promotion</a></li>
+            <li class="nav-item"><a class="nav-link <?= $active === 'dashboard.php' ? 'active' : '' ?>"
+                href="./dashboard.php">Home</a></li>
+            <li class="nav-item"><a class="nav-link <?= $active === 'add_blog.php' ? 'active' : '' ?>"
+                href="./add_blog.php">Write Post</a></li>
+            <li class="nav-item"><a class="nav-link <?= $active === 'campaign_view_user.php' ? 'active' : '' ?>"
+                href="./campaign_view_user.php">Promotion</a></li>
           </ul>
 
           <div class="d-flex align-items-center">
-            <button class="nav-link border-0 bg-transparent d-md-none me-2" type="button" id="searchToggle" title="Toggle Search">
+            <button class="nav-link border-0 bg-transparent d-md-none me-2" type="button" id="searchToggle"
+              title="Toggle Search">
               <i class="bi bi-search"></i>
             </button>
 
-            <form class="d-none d-md-block me-3 position-relative" role="search" action="search.php" method="get" id="searchForm">
+            <form class="d-none d-md-block me-3 position-relative" role="search" action="search.php" method="get"
+              id="searchForm">
               <div class="input-group input-group-sm">
-                <input class="form-control" type="search" name="q" id="desktopSearchInput" placeholder="Search posts... (Ctrl+K)" aria-label="Search" value="<?= isset($_GET['q']) ? htmlspecialchars($_GET['q']) : '' ?>" autocomplete="off">
-                <button class="btn" type="submit" id="desktopSearchBtn" style="background-color: #6c757d; border-color: #6c757d; color: white; cursor: not-allowed;" disabled>
+                <input class="form-control" type="search" name="q" id="desktopSearchInput"
+                  placeholder="Search posts... (Ctrl+K)" aria-label="Search"
+                  value="<?= isset($_GET['q']) ? htmlspecialchars($_GET['q']) : '' ?>" autocomplete="off">
+                <button class="btn" type="submit" id="desktopSearchBtn"
+                  style="background-color: #6c757d; border-color: #6c757d; color: white; cursor: not-allowed;" disabled>
                   <i class="bi bi-search"></i>
                 </button>
               </div>
@@ -85,35 +93,45 @@ $name = $row["name"];
             </form>
 
             <div class="nav-item dropdown">
-              <a class="nav-link d-flex align-items-center p-1" href="#" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Open profile menu">
-                <img src="<?= $row['image'] ?>" onerror="this.src='assets/default-profile.png'" alt="Profile" class="rounded-circle" width="32" height="32" style="object-fit:cover;">
+              <a class="nav-link d-flex align-items-center p-1" href="#" data-bs-toggle="dropdown" aria-expanded="false"
+                aria-label="Open profile menu">
+                <img src="<?= $row['image'] ?>" onerror="this.src='assets/default-profile.png'" alt="Profile"
+                  class="rounded-circle" width="32" height="32" style="object-fit:cover;">
               </a>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                 <li class="dropdown-header text-center">
                   <h6 class="fw-bolder text-capitalize mb-0"><?= $name ?></h6>
                 </li>
-                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li>
                   <a class="dropdown-item d-flex align-items-center" href="profile.php">
                     <i class="me-3 bi bi-person"></i>
                     <span>My Profile</span>
                   </a>
                 </li>
-                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li>
                   <a class="dropdown-item d-flex align-items-center" href="users_post.php">
                     <i class="me-3 bi bi-postcard-heart"></i>
                     <span>My Posts</span>
                   </a>
                 </li>
-                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li>
                   <a class="dropdown-item d-flex align-items-center" href="saved_post.php">
                     <i class="me-3 bi bi-star"></i>
                     <span>Saved Post</span>
                   </a>
                 </li>
-                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li>
                   <a class="dropdown-item d-flex align-items-center" href="./logout.php">
                     <i class="me-3 bi bi-box-arrow-right"></i>
@@ -125,13 +143,15 @@ $name = $row["name"];
           </div>
         </div>
       </div>
-      
+
       <!-- Mobile Search Form -->
       <div class="container-fluid d-md-none" id="mobileSearch" style="display: none;">
         <form class="py-2" role="search" action="search.php" method="get">
           <div class="input-group">
-            <input class="form-control" type="search" name="q" id="mobileSearchInput" placeholder="Search posts..." aria-label="Search" value="<?= isset($_GET['q']) ? htmlspecialchars($_GET['q']) : '' ?>">
-            <button class="btn" type="submit" id="mobileSearchBtn" style="background-color: #6c757d; border-color: #6c757d; color: white; cursor: not-allowed;" disabled>
+            <input class="form-control" type="search" name="q" id="mobileSearchInput" placeholder="Search posts..."
+              aria-label="Search" value="<?= isset($_GET['q']) ? htmlspecialchars($_GET['q']) : '' ?>">
+            <button class="btn" type="submit" id="mobileSearchBtn"
+              style="background-color: #6c757d; border-color: #6c757d; color: white; cursor: not-allowed;" disabled>
               <i class="bi bi-search"></i>
             </button>
           </div>
@@ -143,12 +163,12 @@ $name = $row["name"];
   <script src="./vendor/swiper/swiper-bundle.min.js"></script>
   <script src="./lib/js/main.js"></script>
   <script src="./lib/js/bootstrap.bundle.min.js"></script>
-  
+
   <script>
     // Dynamic search button state management
     function toggleSearchButton(input, button) {
       const hasText = input.value.trim().length > 0;
-      
+
       if (hasText) {
         // Enable button
         button.disabled = false;
@@ -167,7 +187,7 @@ $name = $row["name"];
     }
 
     // Initialize button states on page load
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const desktopInput = document.getElementById('desktopSearchInput');
       const desktopBtn = document.getElementById('desktopSearchBtn');
       const mobileInput = document.getElementById('mobileSearchInput');
@@ -176,41 +196,41 @@ $name = $row["name"];
       // Set initial states
       if (desktopInput && desktopBtn) {
         toggleSearchButton(desktopInput, desktopBtn);
-        
+
         // Add event listeners for desktop search
-        desktopInput.addEventListener('input', function() {
+        desktopInput.addEventListener('input', function () {
           toggleSearchButton(this, desktopBtn);
         });
-        
-        desktopInput.addEventListener('keyup', function() {
+
+        desktopInput.addEventListener('keyup', function () {
           toggleSearchButton(this, desktopBtn);
         });
-        
-        desktopInput.addEventListener('paste', function() {
+
+        desktopInput.addEventListener('paste', function () {
           setTimeout(() => toggleSearchButton(this, desktopBtn), 10);
         });
       }
 
       if (mobileInput && mobileBtn) {
         toggleSearchButton(mobileInput, mobileBtn);
-        
+
         // Add event listeners for mobile search
-        mobileInput.addEventListener('input', function() {
+        mobileInput.addEventListener('input', function () {
           toggleSearchButton(this, mobileBtn);
         });
-        
-        mobileInput.addEventListener('keyup', function() {
+
+        mobileInput.addEventListener('keyup', function () {
           toggleSearchButton(this, mobileBtn);
         });
-        
-        mobileInput.addEventListener('paste', function() {
+
+        mobileInput.addEventListener('paste', function () {
           setTimeout(() => toggleSearchButton(this, mobileBtn), 10);
         });
       }
     });
 
     // Mobile search toggle
-    document.getElementById('searchToggle')?.addEventListener('click', function() {
+    document.getElementById('searchToggle')?.addEventListener('click', function () {
       const mobileSearch = document.getElementById('mobileSearch');
       if (mobileSearch.style.display === 'none' || mobileSearch.style.display === '') {
         mobileSearch.style.display = 'block';
@@ -227,7 +247,7 @@ $name = $row["name"];
     });
 
     // Global keyboard shortcut for search (Ctrl/Cmd + K)
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault();
         const searchInput = document.querySelector('#searchForm input') || document.querySelector('#mobileSearch input');
@@ -243,33 +263,33 @@ $name = $row["name"];
     // Search suggestions functionality
     let searchTimeout;
     let currentSuggestionIndex = -1;
-    
+
     document.querySelectorAll('input[name="q"]').forEach(input => {
       const suggestionsContainer = input.closest('form').querySelector('.search-suggestions');
-      
+
       // Handle input events for suggestions
-      input.addEventListener('input', function() {
+      input.addEventListener('input', function () {
         const query = this.value.trim();
         currentSuggestionIndex = -1;
-        
+
         clearTimeout(searchTimeout);
-        
+
         if (query.length < 2) {
           if (suggestionsContainer) {
             suggestionsContainer.style.display = 'none';
           }
           return;
         }
-        
+
         searchTimeout = setTimeout(() => {
           fetchSearchSuggestions(query, suggestionsContainer);
         }, 300);
       });
 
       // Handle keyboard navigation
-      input.addEventListener('keydown', function(e) {
+      input.addEventListener('keydown', function (e) {
         const suggestions = suggestionsContainer?.querySelectorAll('.search-suggestion-item');
-        
+
         if (e.key === 'ArrowDown') {
           e.preventDefault();
           if (suggestions && suggestions.length > 0) {
@@ -299,7 +319,7 @@ $name = $row["name"];
       });
 
       // Hide suggestions when clicking outside
-      document.addEventListener('click', function(e) {
+      document.addEventListener('click', function (e) {
         if (suggestionsContainer && !input.contains(e.target) && !suggestionsContainer.contains(e.target)) {
           suggestionsContainer.style.display = 'none';
         }
@@ -312,9 +332,9 @@ $name = $row["name"];
     // Fetch search suggestions via AJAX
     function fetchSearchSuggestions(query, container) {
       if (!container) return;
-      
+
       console.log('Fetching suggestions for:', query);
-      
+
       fetch(`search_suggestions.php?q=${encodeURIComponent(query)}`)
         .then(response => response.json())
         .then(suggestions => {
@@ -333,9 +353,9 @@ $name = $row["name"];
         console.log('No container found');
         return;
       }
-      
+
       console.log('Displaying suggestions in container:', container);
-      
+
       if (suggestions.length === 0) {
         container.innerHTML = '<div class="search-suggestion-empty">No suggestions found</div>';
         container.style.display = 'block';
@@ -353,9 +373,9 @@ $name = $row["name"];
         } else if (suggestion.type === 'author') {
           iconClass = 'bi-person-circle';
         }
-        
+
         const typeLabel = suggestion.type.charAt(0).toUpperCase() + suggestion.type.slice(1);
-        
+
         html += `
           <a href="${suggestion.url}" class="search-suggestion-item" data-index="${index}">
             <i class="bi ${iconClass}"></i>
@@ -372,7 +392,7 @@ $name = $row["name"];
       container.style.display = 'block';
       currentSuggestionIndex = -1;
     }
-    
+
     // Helper function to escape HTML
     function escapeHtml(text) {
       const div = document.createElement('div');

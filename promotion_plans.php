@@ -16,7 +16,7 @@ include "./navbar_dash.php";
                 ?>
                 <div class="col-4 my-2 ">
                     <div class="box blue">
-                        <div class="number-bg">6</div>
+
                         <div class="box-content">
                             <h2>
                                 <?= $row["name"] ?>

@@ -106,7 +106,7 @@ include "./alert_message.php";
         <h4 class="text-center">Selected Plan</h4>
         <div class="col-8">
           <div class="box blue" style="min-height: auto;">
-            <div class="number-bg">6</div>
+
             <div class="box-content">
               <?php
               $query = "Select * from campaign_package where package_id = $package_id ";
@@ -137,7 +137,7 @@ include "./alert_message.php";
         <h4 class="text-center">Selected Post</h4>
         <div class="col-8">
           <div class="box blue" style="min-height: auto;">
-            <div class="number-bg">6</div>
+
             <?php
             $query = "Select * from blog_posts where post_id = $post_id ";
             $runquery = mysqli_query($conn, $query);
@@ -170,7 +170,7 @@ include "./alert_message.php";
           <input class='form-control' type='hidden' value="<?= $post_id ?>" name='post_id'>
           <input class='form-control' type='hidden' value="<?= $user_id ?>" name='user_id'>
           <label for="start_date" class="form-label">Start</label>
-          <input type="datetime-local" class="form-control"  onchange="endDateChange(<?= $total_days ?>)" id="start_date"
+          <input type="datetime-local" class="form-control" onchange="endDateChange(<?= $total_days ?>)" id="start_date"
             name="start_date" required>
         </div>
         <div class="col-md-6">

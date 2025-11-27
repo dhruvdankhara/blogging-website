@@ -7,7 +7,7 @@ if (isset($_POST["submit"])) {
     $new_password = $_POST["new_password"];
     $renew_password = $_POST["renew_password"];
     $token = $_GET["token"];
-    
+
     // Step 2: Validate password length
     if (strlen($new_password) < 6) {
         $message[] = array(
@@ -42,7 +42,7 @@ if (isset($_POST["submit"])) {
         $q = "SELECT * FROM users WHERE token='$token'";
         $rq = mysqli_query($conn, $q);
         $count = mysqli_num_rows($rq);
-        
+
         if ($count) {
             // Step 4: Check if passwords match
             if ($new_password != $renew_password) {
@@ -55,11 +55,11 @@ if (isset($_POST["submit"])) {
             } else {
                 // Step 5: Hash new password and update in database
                 $hash_new_password = password_hash($new_password, PASSWORD_DEFAULT);
-                
+
                 // Update password and clear token
                 $query = "UPDATE users SET password='$hash_new_password', token=NULL WHERE token='$token'";
                 $runquery = mysqli_query($conn, $query);
-                
+
                 if ($runquery) {
                     // Step 6: Password reset successful
                     $message[] = array(
@@ -117,24 +117,29 @@ include "./alert_message.php";
                 <div class="auth-card p-4 p-md-5">
                     <form method="POST">
                         <div class="text-center mb-3">
-                            <img class="mb-2" src="./assets/website_logo-removebg-preview.png" alt="BlogHive" width="96" height="96">
+                            <img class="mb-2" src="./assets/website_logo-removebg-preview.png" alt="BlogHive" width="96"
+                                height="96">
                             <h4 class="mt-2 mb-0 fw-semibold text-brand">Reset password</h4>
                             <p class="text-muted small mb-0">Enter your new password below</p>
                         </div>
 
                         <div class="form-floating my-3">
-                            <input type="password" name="new_password" class="form-control" id="newPassword" placeholder="New password" required>
+                            <input type="password" name="new_password" class="form-control" id="newPassword"
+                                placeholder="New password" required>
                             <label for="newPassword">New password</label>
                             <div class="invalid-feedback" id="newPasswordError"></div>
                         </div>
                         <div class="form-floating my-3">
-                            <input type="password" name="renew_password" class="form-control" id="confirmPassword" placeholder="Confirm password" required>
+                            <input type="password" name="renew_password" class="form-control" id="confirmPassword"
+                                placeholder="Confirm password" required>
                             <label for="confirmPassword">Confirm new password</label>
                             <div class="invalid-feedback" id="confirmPasswordError"></div>
                         </div>
-                        <button class="btn btn-custom w-100 py-2 my-2" name="submit" type="submit">Update password</button>
+                        <button class="btn btn-custom w-100 py-2 my-2" name="submit" type="submit">Update
+                            password</button>
                         <div class="text-center mt-2">
-                            <small class="text-center">Remembered your password? &nbsp;<a href="./index.php">Log in</a></small>
+                            <small class="text-center">Remembered your password? &nbsp;<a href="./index.php">Log
+                                    in</a></small>
                         </div>
                     </form>
                 </div>
@@ -143,12 +148,12 @@ include "./alert_message.php";
     </div>
 
     <script>
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.querySelector('form').addEventListener('submit', function (e) {
             let isValid = true;
-            
+
             // Clear previous errors
             clearErrors();
-            
+
             // Validate new password
             const newPassword = document.getElementById('newPassword').value;
             if (newPassword === '') {
@@ -167,7 +172,7 @@ include "./alert_message.php";
                 showError('newPassword', 'newPasswordError', 'Password must contain at least one number');
                 isValid = false;
             }
-            
+
             // Validate confirm password
             const confirmPassword = document.getElementById('confirmPassword').value;
             if (confirmPassword === '') {
@@ -177,56 +182,56 @@ include "./alert_message.php";
                 showError('confirmPassword', 'confirmPasswordError', 'Passwords do not match');
                 isValid = false;
             }
-            
+
             if (!isValid) {
                 e.preventDefault();
             }
         });
-        
+
         function showError(inputId, errorId, message) {
             const input = document.getElementById(inputId);
             const error = document.getElementById(errorId);
-            
+
             input.classList.add('is-invalid');
             error.textContent = message;
             error.style.display = 'block';
         }
-        
+
         function clearErrors() {
             const inputs = ['newPassword', 'confirmPassword'];
             const errors = ['newPasswordError', 'confirmPasswordError'];
-            
+
             inputs.forEach(inputId => {
                 document.getElementById(inputId).classList.remove('is-invalid');
             });
-            
+
             errors.forEach(errorId => {
                 const error = document.getElementById(errorId);
                 error.textContent = '';
                 error.style.display = 'none';
             });
         }
-        
+
         // Real-time validation
-        document.getElementById('newPassword').addEventListener('input', function() {
+        document.getElementById('newPassword').addEventListener('input', function () {
             if (this.classList.contains('is-invalid')) {
                 const password = this.value;
                 const hasLowercase = /(?=.*[a-z])/.test(password);
                 const hasUppercase = /(?=.*[A-Z])/.test(password);
                 const hasNumber = /(?=.*\d)/.test(password);
-                
+
                 if (password !== '' && password.length >= 6 && hasLowercase && hasUppercase && hasNumber) {
                     this.classList.remove('is-invalid');
                     document.getElementById('newPasswordError').style.display = 'none';
                 }
             }
         });
-        
-        document.getElementById('confirmPassword').addEventListener('input', function() {
+
+        document.getElementById('confirmPassword').addEventListener('input', function () {
             if (this.classList.contains('is-invalid')) {
                 const newPassword = document.getElementById('newPassword').value;
                 const confirmPassword = this.value;
-                
+
                 if (confirmPassword !== '' && newPassword === confirmPassword) {
                     this.classList.remove('is-invalid');
                     document.getElementById('confirmPasswordError').style.display = 'none';
