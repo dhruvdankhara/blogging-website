@@ -1,5 +1,4 @@
 <?php
-//  User Requests Password Reset
 include "connection.php";
 session_start();
 
@@ -8,7 +7,6 @@ if (isset($_SESSION["user_id"])) {
 }
 
 if (isset($_POST["submit"])) {
-  //  Get form data
   $email = $_POST["email"];
   $passwd = $_POST["passwd"];
 
@@ -23,7 +21,6 @@ if (isset($_POST["submit"])) {
 
     //  Verify the password
     if (password_verify($passwd, $row["password"])) {
-      //  Redirect based on user type
       if ($row['user_type'] == "admin") {
         header("location:admin/dashboard.php");
       } else {
@@ -38,7 +35,6 @@ if (isset($_POST["submit"])) {
       );
     }
   } else {
-    //  User does not exist
     $message[] = array(
       'icon' => 'error',
       'type' => 'Login',
@@ -69,7 +65,7 @@ if (isset($_POST["sendMail"])) {
   if ($count) {
     //  If email exists, update the user's token
     $user_data = mysqli_fetch_assoc($rq);
-    
+
     // Store token in database with timestamp for security
     $q = "UPDATE users SET token = '$token', token_created_at = NOW() WHERE user_id = {$user_data['user_id']}";
     $rq = mysqli_query($conn, $q);
@@ -179,7 +175,8 @@ include "./alert_message.php";
               <label for="floatingPassword">Enter Password</label>
               <div class="invalid-feedback" id="loginPasswordError"></div>
             </div>
-            <small class="text-end d-block"><a data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)">Forgot password?</a></small>
+            <small class="text-end d-block"><a data-bs-toggle="modal" data-bs-target="#exampleModal"
+                href="javascript:void(0)">Forgot password?</a></small>
             <button class="btn btn-custom w-100 py-2 my-3" name="submit" type="submit">Log in</button>
             <div class="text-center">
               <small>Don't have an account? &nbsp;<a href="./signup.php">Sign Up</a></small>
@@ -203,9 +200,11 @@ include "./alert_message.php";
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="POST" class="text-center" action="index.php" id="forgotPasswordForm" onsubmit="return validateForgotPasswordForm()">
+          <form method="POST" class="text-center" action="index.php" id="forgotPasswordForm"
+            onsubmit="return validateForgotPasswordForm()">
             <div class="form-floating my-2">
-              <input type="text" name="email" class="form-control" id="forgotPasswordEmail" placeholder="name@example.com">
+              <input type="text" name="email" class="form-control" id="forgotPasswordEmail"
+                placeholder="name@example.com">
               <label for="forgotPasswordEmail">Enter Email</label>
               <div class="invalid-feedback" id="forgotPasswordError"></div>
             </div>
@@ -219,10 +218,10 @@ include "./alert_message.php";
   <script>
     function validateLoginForm() {
       let isValid = true;
-      
+
       // Clear previous errors
       clearLoginErrors();
-      
+
       // Validate email
       const email = document.getElementById('floatingInput').value.trim();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -233,25 +232,25 @@ include "./alert_message.php";
         showLoginError('floatingInput', 'loginEmailError', 'Please enter a valid email address');
         isValid = false;
       }
-      
+
       // Validate password
       const password = document.getElementById('floatingPassword').value;
       if (password === '') {
         showLoginError('floatingPassword', 'loginPasswordError', 'Password is required');
         isValid = false;
       }
-      
+
       return isValid;
     }
-    
+
     function validateForgotPasswordForm() {
       const email = document.getElementById('forgotPasswordEmail').value.trim();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      
+
       // Clear previous error
       document.getElementById('forgotPasswordEmail').classList.remove('is-invalid');
       document.getElementById('forgotPasswordError').style.display = 'none';
-      
+
       if (email === '') {
         showLoginError('forgotPasswordEmail', 'forgotPasswordError', 'Email is required');
         return false;
@@ -259,36 +258,36 @@ include "./alert_message.php";
         showLoginError('forgotPasswordEmail', 'forgotPasswordError', 'Please enter a valid email address');
         return false;
       }
-      
+
       return true;
     }
-    
+
     function showLoginError(inputId, errorId, message) {
       const input = document.getElementById(inputId);
       const error = document.getElementById(errorId);
-      
+
       input.classList.add('is-invalid');
       error.textContent = message;
       error.style.display = 'block';
     }
-    
+
     function clearLoginErrors() {
       const inputs = ['floatingInput', 'floatingPassword'];
       const errors = ['loginEmailError', 'loginPasswordError'];
-      
+
       inputs.forEach(inputId => {
         document.getElementById(inputId).classList.remove('is-invalid');
       });
-      
+
       errors.forEach(errorId => {
         const error = document.getElementById(errorId);
         error.textContent = '';
         error.style.display = 'none';
       });
     }
-    
+
     // Real-time validation for login form
-    document.getElementById('floatingInput').addEventListener('input', function() {
+    document.getElementById('floatingInput').addEventListener('input', function () {
       if (this.classList.contains('is-invalid')) {
         const email = this.value.trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -298,20 +297,20 @@ include "./alert_message.php";
         }
       }
     });
-    
-    document.getElementById('floatingPassword').addEventListener('input', function() {
+
+    document.getElementById('floatingPassword').addEventListener('input', function () {
       if (this.classList.contains('is-invalid')) {
         const password = this.value;
-        
+
         if (password !== '') {
           this.classList.remove('is-invalid');
           document.getElementById('loginPasswordError').style.display = 'none';
         }
       }
     });
-    
+
     // Real-time validation for forgot password
-    document.getElementById('forgotPasswordEmail').addEventListener('input', function() {
+    document.getElementById('forgotPasswordEmail').addEventListener('input', function () {
       if (this.classList.contains('is-invalid')) {
         const email = this.value.trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
