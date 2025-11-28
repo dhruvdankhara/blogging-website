@@ -142,7 +142,7 @@ include "./alert_message.php";
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlogHive - Share Your Story with the World</title>
+  <title>BlogSphere - Share Your Story with the World</title>
   <link rel="icon" href="./assets/website_logo-removebg-preview.png" type="image/png">
   <link href="./lib/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./vendor/css/style.css">

@@ -77,7 +77,7 @@ if (isset($_POST["submit"])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlogHive</title>
+  <title>BlogSphere</title>
   <link rel="icon" href="./assets/website_logo-removebg-preview.png" type="image/png">
   <link href="./lib/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./vendor/css/style.css">

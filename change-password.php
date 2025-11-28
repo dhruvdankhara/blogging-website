@@ -99,7 +99,7 @@ include "./alert_message.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlogHive</title>
+    <title>BlogSphere</title>
     <link rel="icon" href="./assets/website_logo-removebg-preview.png" type="image/png">
     <link href="./lib/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./vendor/css/style.css">
@@ -117,8 +117,8 @@ include "./alert_message.php";
                 <div class="auth-card p-4 p-md-5">
                     <form method="POST">
                         <div class="text-center mb-3">
-                            <img class="mb-2" src="./assets/website_logo-removebg-preview.png" alt="BlogHive" width="96"
-                                height="96">
+                            <img class="mb-2" src="./assets/website_logo-removebg-preview.png" alt="BlogSphere"
+                                width="96" height="96">
                             <h4 class="mt-2 mb-0 fw-semibold text-brand">Reset password</h4>
                             <p class="text-muted small mb-0">Enter your new password below</p>
                         </div>
