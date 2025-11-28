@@ -156,7 +156,7 @@ include "./alert_message.php";
 
   <div class="container page-section">
     <div class="row justify-content-center">
-      <div class="col-sm-10 col-md-7 col-lg-4">
+      <div class="col-sm-10 col-md-7 col-lg-5">
         <div class="auth-card p-4 p-md-5 w-100 m-auto">
           <form method="POST" id="loginForm" onsubmit="return validateLoginForm()">
             <div class="text-center">
