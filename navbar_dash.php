@@ -55,7 +55,7 @@ $name = $row["name"];
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top py-2">
       <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="./dashboard.php">
-          <span class="fw-bold text-brand">Blog<span style="color: #2ecc71;">Sphere</span></span>
+          <h3 class="fw-bold text-brand">Blog<span style="color: #2ecc71;">Sphere</span></h3>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
           aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">

@@ -4,11 +4,11 @@ include "./navbar_dash.php";
 $search_query = isset($_GET['q']) ? trim($_GET['q']) : '';
 ?>
 
-<div class="container-fluid px-3 px-md-4 py-4">
+<div class="container px-5 px-md-4 py-4">
   <?php if (!empty($search_query)): ?>
   </div>
 
-  <div class="row g-3 g-md-4">
+  <div class="row g-3 g-md-4 px-5">
     <?php
     $search_query_safe = mysqli_real_escape_string($conn, $search_query);
 
