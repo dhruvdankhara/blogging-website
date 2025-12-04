@@ -187,7 +187,7 @@
 
   <div class="container my-4">
     <div class="row">
-      <h2 class="col-sm-12 mb-4">Your created blogs...</h2>
+      <h2 class="col-sm-12 mb-4">Your created blogs</h2>
       <?php
       if (mysqli_num_rows($fetchBlogRunQuery) <= 0) {
         $msg = "You are not created any post!!Go to add blog and add post!!";
@@ -298,7 +298,7 @@
                     </div>
 
                     <div class='form-group row m-0 mt-2'>
-                      <label class="col-4 my-2" for='image'>Profile image</label>
+                      <label class="col-4 my-2" for='image'>Blog image</label>
                       <div class="col-8">
                         <input type="file" accept="image/*"
                           onchange="document.getElementById('output<?= $result['post_id'] ?>').src = window.URL.createObjectURL(this.files[0])"
