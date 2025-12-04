@@ -75,13 +75,22 @@ if (isset($_POST["sendMail"])) {
 
       // Set up PHPMailer
       $mail->isSMTP();
-      $mail->Host = 'smtp.gmail.com';
-      $mail->SMTPAuth = true;
-      $mail->Username = 'jropox7272@gmail.com';
-      $mail->Password = 'etpjpdrlktjuiewu';
-      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-      $mail->SMTPSecure = 'tls';
-      $mail->Port = 587;
+$mail->Host = "smtp.gmail.com";
+$mail->SMTPAuth = true;
+$mail->Username = "jropox7272@gmail.com";  
+$mail->Password = "etpjpdrlktjuiewu";  // Gmail App Password
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+$mail->Port = 587;
+
+// SSL FIX for XAMPP
+$mail->SMTPOptions = [
+  "ssl" => [
+    "verify_peer" => false,
+    "verify_peer_name" => false,
+    "allow_self_signed" => true
+  ]
+];
+
 
       $mail->addAddress($email);
       $mail->isHTML(true);
