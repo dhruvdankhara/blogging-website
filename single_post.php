@@ -208,14 +208,13 @@
                 <form action="" method="POST">
                   <input type="hidden" name="post_id" value="<?= $post_id ?>">
                   <?php if ($is_saved) { ?>
-                    <button class="btn btn-sm ms-2" type="submit" name="unsave"
-                      style="color: #94cfc4; background-color: #3c463d;">
-                      <i class="las la-bookmark fs-3"></i>&nbsp;
+                    <button class="btn btn-sm ms-2" type="submit" name="unsave" style="background: transparent; border: none; padding: 0;">
+                      <i class="bi bi-bookmark-fill fs-3" style="color: #000000;"></i>&nbsp;
                     </button>
 
                   <?php } else { ?>
-                    <button class="btn btn-sm btn-custom ms-2" type="submit" name="save">
-                      <i class="lar la-bookmark fs-3"></i>&nbsp;
+                    <button class="btn btn-sm ms-2" type="submit" name="save" style="background: transparent; border: none; padding: 0;">
+                      <i class="bi bi-bookmark fs-3" style="color: #000000;"></i>&nbsp;
                     </button>
                   <?php } ?>
 

@@ -89,6 +89,9 @@
           if ($result["comment_count"] == null) {
             $result["comment_count"] = 0;
           }
+
+          $post_id = $result["post_id"];
+          $save_id = $result["save_id"];
           ?>
           <div class="col-sm-6">
             <div class="card mb-3">
@@ -111,17 +114,15 @@
                         <?= $result["created_at"] ?>
                       </small>
                     </p>
-                    <a href="single_post.php?post_id=<?= $result["post_id"] ?>">
+                    <a href="single_post.php?post_id=<?= $post_id ?>">
                       <button class="btn btn-custom">
                         <i class="las la-eye fs-4"></i>
                       </button>
                     </a>
                     <form method="post" style="float:right;">
-                      <input type="hidden" name="save_id" value="<?= $result["save_id"] ?>">
-                      <button class="btn btn-danger" type="submit" name="delete">
-                        <a href="single_post.php?post_id=<?= $result["post_id"] ?>">
-                          <i class="las la-trash-alt fs-4"></i>
-                        </a>
+                      <input type="hidden" name="save_id" value="<?= $save_id ?>">
+                      <button class="btn" type="submit" name="delete" style="background: transparent; border: none; padding: 0;">
+                        <i class="bi bi-bookmark-fill fs-4" style="color: #000000;"></i>
                       </button>
                     </form>
                   </div>
