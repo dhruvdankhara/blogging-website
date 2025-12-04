@@ -32,7 +32,7 @@
             style="background: transparent;">
             <div class="swiper-wrapper">
               <?php
-              $q1 = "SELECT b.* FROM blog_posts b,campaigns c WHERE b.post_id=c.post_id AND c.status='running' AND NOW() BETWEEN c.start_date AND c.end_date";
+              $q1 = "SELECT b.* FROM blog_posts b,campaigns c WHERE b.post_id=c.post_id AND NOW() BETWEEN c.start_date AND c.end_date ORDER BY c.total_amount DESC";
               $runq1 = mysqli_query($conn, $q1);
 
               $rowCount = mysqli_num_rows($runq1);

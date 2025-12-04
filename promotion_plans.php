@@ -27,6 +27,9 @@ include "./navbar_dash.php";
                             <h5>
                                 <?= $row["description"] ?>
                             </h5>
+                            <h5>
+                                <i class="bi bi-calendar-check"></i> <?= $row["total_days"] ?> Days
+                            </h5>
                             <button class="button" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal<?= $row["package_id"] ?>">
                                 <span>Continue</span><i class="material-icons"></i>

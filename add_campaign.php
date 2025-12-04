@@ -27,15 +27,11 @@ if (isset($_POST['submit']) && isset($_POST["package_id"]) && isset($_POST["post
           'redirection' => 'promotion_plans.php',
         ];
       } else {
-        $insertQuery = "INSERT INTO campaigns (package_id, post_id, user_id, start_date, end_date, name, total_amount) VALUES (
-                $package_id,
-                $post_id,
-                $user_id,
-                '$start_date',
-                '$end_date',
-                '$name',
-                $total_amount
-            )";
+
+
+
+        $insertQuery = "INSERT INTO campaigns (package_id, post_id, user_id, start_date, end_date, name, total_amount, status) 
+                        VALUES ($package_id, $post_id, $user_id, '$start_date', '$end_date', '$name', $total_amount, 'running')";
 
         $insertResult = mysqli_query($conn, $insertQuery);
 
@@ -169,9 +165,10 @@ include "./alert_message.php";
           <input class='form-control' type='hidden' value="<?= $package_id ?>" name='package_id'>
           <input class='form-control' type='hidden' value="<?= $post_id ?>" name='post_id'>
           <input class='form-control' type='hidden' value="<?= $user_id ?>" name='user_id'>
+          <input type="hidden" id="total_days" value="<?= $total_days ?>">
           <label for="start_date" class="form-label">Start</label>
           <input type="datetime-local" class="form-control" onchange="endDateChange(<?= $total_days ?>)" id="start_date"
-            name="start_date" required>
+            name="start_date" required readonly>
         </div>
         <div class="col-md-6">
           <label for="end_date" class="form-label">End</label>
@@ -181,7 +178,11 @@ include "./alert_message.php";
           <label for="campaign_name" class="form-label">Campaign name</label>
           <input type="text" class="form-control" id="campaign_name" name="name" required>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
+          <label for="campaign_days" class="form-label">Duration</label>
+          <input type="text" class="form-control" readonly value="<?= $total_days ?> Days" id="campaign_days">
+        </div>
+        <div class="col-md-3">
           <label for="total_amount" class="form-label">Total Amount</label>
           <input type="text" class="form-control" readonly value="<?= $total_amount * $total_days ?>" id="total_amount"
             name="total_amount" required>
@@ -200,16 +201,30 @@ include "./alert_message.php";
 </div>
 
 <script>
+  // Set today's date automatically on page load
+  $(document).ready(function () {
+    setTodayDate();
+  });
+
+  function setTodayDate() {
+    const now = new Date();
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+    const formattedDate = now.toISOString().slice(0, 16);
+    $("#start_date").val(formattedDate);
+
+    // Automatically calculate end date based on package days
+    const totalDays = parseInt($("#total_days").val());
+    endDateChange(totalDays);
+  }
+
   function endDateChange(days) {
     if ($("#start_date").val()) {
       const date = new Date($("#start_date").val());
-      // console.log(date);
       const result = addDays(date, days);
       result.setMinutes(result.getMinutes() - result.getTimezoneOffset());
 
       const formattedDate = result.toISOString().slice(0, 16);
       $("#end_date").val(formattedDate);
-      // console.log(formattedDate);
     }
   }
 
