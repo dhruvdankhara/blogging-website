@@ -17,10 +17,10 @@ if (isset($_POST["submit"])) {
   //  Check if a user with that email exists
   if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_assoc($result);
-    $_SESSION["user_id"] = $row["user_id"];
 
     //  Verify the password
     if (password_verify($passwd, $row["password"])) {
+      $_SESSION["user_id"] = $row["user_id"];
       if ($row['user_type'] == "admin") {
         header("location:admin/dashboard.php");
       } else {
@@ -75,21 +75,21 @@ if (isset($_POST["sendMail"])) {
 
       // Set up PHPMailer
       $mail->isSMTP();
-$mail->Host = "smtp.gmail.com";
-$mail->SMTPAuth = true;
-$mail->Username = "jropox7272@gmail.com";  
-$mail->Password = "etpjpdrlktjuiewu";  // Gmail App Password
-$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-$mail->Port = 587;
+      $mail->Host = "smtp.gmail.com";
+      $mail->SMTPAuth = true;
+      $mail->Username = "jropox7272@gmail.com";
+      $mail->Password = "etpjpdrlktjuiewu";  // Gmail App Password
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+      $mail->Port = 587;
 
-// SSL FIX for XAMPP
-$mail->SMTPOptions = [
-  "ssl" => [
-    "verify_peer" => false,
-    "verify_peer_name" => false,
-    "allow_self_signed" => true
-  ]
-];
+      // SSL FIX for XAMPP
+      $mail->SMTPOptions = [
+        "ssl" => [
+          "verify_peer" => false,
+          "verify_peer_name" => false,
+          "allow_self_signed" => true
+        ]
+      ];
 
 
       $mail->addAddress($email);
