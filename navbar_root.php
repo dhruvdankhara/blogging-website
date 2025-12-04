@@ -17,7 +17,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top py-2">
     <div class="container-fluid">
       <a class="navbar-brand d-flex align-items-center" href="./dashboard.php">
-        <h2 class="fw-bolder text-brand">Blog<span style="color: #2ecc71;">Sphere</span></h2>
+        <h2 class="fw-bolder text-brand">Blog<span style="color: #2ecc71;">Hive</span></h2>
       </a>
     </div>
   </nav>

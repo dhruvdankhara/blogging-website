@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlogSphere</title>
+  <title>BlogHive</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <link rel="stylesheet" href="./vendor/css/style.css">
@@ -55,7 +55,7 @@ $name = $row["name"];
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top py-2">
       <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="./dashboard.php">
-          <h3 class="fw-bold text-brand">Blog<span style="color: #2ecc71;">Sphere</span></h3>
+          <h3 class="fw-bold text-brand">Blog<span style="color: #2ecc71;">Hive</span></h3>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
           aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
