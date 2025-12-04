@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>BlogSphere Admin</title>
+  <title>BlogHive Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
   <link rel="shortcut icon" href="../assets/website_logo-removebg-preview.png" type="image/x-icon">
@@ -48,7 +48,7 @@ if ($row['user_type'] == "client") {
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top py-2">
       <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="dashboard.php">
-          <span class="fw-bold text-brand">Blog<span style="color: #2ecc71;">Sphere</span> <small
+          <span class="fw-bold text-brand">Blog<span style="color: #2ecc71;">Hive</span> <small
               class="text-muted">Admin</small></span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar"
