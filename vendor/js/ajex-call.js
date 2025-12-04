@@ -9,8 +9,8 @@ function likePost(postId) {
       $("#likeCount_" + postId).text(response);
       $("#icon_" + postId)
         .find("i")
-        .toggleClass("bi-hand-thumbs-up")
-        .toggleClass("bi-hand-thumbs-up-fill");
+        .toggleClass("bi-heart")
+        .toggleClass("bi-heart-fill");
     },
   });
 }

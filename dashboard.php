@@ -167,7 +167,7 @@
                       <div id="icon_<?= $post_id ?>" onclick="event.stopPropagation(); likePost(<?= $post_id ?>)"
                         class="me-1" role="button" tabindex="0">
                         <i
-                          class="bi <?= mysqli_num_rows($rq) == 0 ? 'bi-hand-thumbs-up' : 'bi-hand-thumbs-up-fill' ?> fs-6"></i>
+                          class="bi <?= mysqli_num_rows($rq) == 0 ? 'bi-heart' : 'bi-heart-fill' ?> fs-6"></i>
                       </div>
                       <div id="likeCount_<?= $post_id ?>" class="small text-muted">
                         <?= $like_count ?>

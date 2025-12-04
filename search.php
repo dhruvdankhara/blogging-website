@@ -69,7 +69,7 @@ $search_query = isset($_GET['q']) ? trim($_GET['q']) : '';
                 </div>
                 <div class="d-flex align-items-center gap-2 flex-shrink-0">
                   <div class="d-flex align-items-center">
-                    <i class="bi bi-hand-thumbs-up me-1"></i>
+                    <i class="bi bi-heart me-1"></i>
                     <small class="text-muted"><?= $like_count ?></small>
                   </div>
                   <div class="small text-muted d-flex align-items-center">

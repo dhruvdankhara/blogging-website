@@ -190,7 +190,7 @@
 
                 <div id="icon_<?= $post_id ?>" onclick="likePost(<?= $post_id ?>)">
                   <i
-                    class="bi <?= mysqli_num_rows($rq) == 0 ? 'bi-hand-thumbs-up' : 'bi-hand-thumbs-up-fill' ?> fs-3"></i>&nbsp;
+                    class="bi <?= mysqli_num_rows($rq) == 0 ? 'bi-heart' : 'bi-heart-fill' ?> fs-3"></i>&nbsp;
                 </div>
 
                 <div id="likeCount_<?= $post_id ?>" class="me-2">
