@@ -10,7 +10,7 @@ if (isset($_POST['submit']) && isset($_POST["package_id"]) && isset($_POST["post
   $name = $_POST["name"];
   $total_amount = $_POST["total_amount"];
   if ($package_id && $post_id && $user_id && $start_date && $end_date && $name && $total_amount) {
-    $query = "SELECT COUNT(*) FROM campaigns WHERE post_id = $post_id AND user_id = $user_id AND status IN ('pending', 'running')";
+    $query = "SELECT COUNT(*) FROM campaigns WHERE post_id = $post_id AND user_id = $user_id AND status IN ('running')";
     $result = mysqli_query($conn, $query);
 
     // print_r(mysqli_fetch_row($result));
@@ -27,8 +27,6 @@ if (isset($_POST['submit']) && isset($_POST["package_id"]) && isset($_POST["post
           'redirection' => 'promotion_plans.php',
         ];
       } else {
-
-
 
         $insertQuery = "INSERT INTO campaigns (package_id, post_id, user_id, start_date, end_date, name, total_amount, status) 
                         VALUES ($package_id, $post_id, $user_id, '$start_date', '$end_date', '$name', $total_amount, 'running')";
@@ -65,6 +63,7 @@ if (isset($_POST['submit']) && isset($_POST["package_id"]) && isset($_POST["post
     ];
   }
 }
+
 if (isset($_GET['data'])) {
   $data = $_GET['data'];
   $decodeData = base64_decode($data);
@@ -77,12 +76,6 @@ if (isset($_GET['data'])) {
   } else {
     header("location:dashboard.php");
   }
-  // echo $post_id . "</br>";
-  // echo $user_id . "</br>";
-  // echo $package_id . "</br>";
-
-  // echo $q;
-
 
 } else {
   header("location:dashboard.php");
@@ -201,7 +194,6 @@ include "./alert_message.php";
 </div>
 
 <script>
-  // Set today's date automatically on page load
   $(document).ready(function () {
     setTodayDate();
   });
@@ -212,7 +204,6 @@ include "./alert_message.php";
     const formattedDate = now.toISOString().slice(0, 16);
     $("#start_date").val(formattedDate);
 
-    // Automatically calculate end date based on package days
     const totalDays = parseInt($("#total_days").val());
     endDateChange(totalDays);
   }
