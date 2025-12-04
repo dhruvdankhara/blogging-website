@@ -6,7 +6,6 @@ if (isset($_POST["submit"])) {
   $email = $_POST["email"];
   $passwd = $_POST["passwd"];
   $image = $_FILES["profile"]["name"];
-  // ! what is this
   $tempname = $_FILES['profile']['tmp_name'];
 
   if (strlen($passwd) < 6) {
