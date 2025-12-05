@@ -12,22 +12,22 @@ if (isset($_POST["submit"]) && isset($_POST["name"]) && isset($_POST["package_id
         $price &&
         $description
     ) {
-        $query = "update campaign_package set  name = '$name' , 	price = '$price' , description='$description'   where package_id = '$package_id'";
+        $query = "update campaign_package set  name = '$name' , price = '$price' , description='$description'   where package_id = '$package_id'";
         $runquery = mysqli_query($conn, $query);
         if ($runquery) {
             $message[] = array(
                 'type' => 'Package Update',
                 'message' => 'Package Update successfully',
                 'icon' => 'success'
-              );
-       
+            );
+
         }
     } else {
         $message[] = array(
             'icon' => 'error',
             'type' => 'Error',
             'message' => 'Enter  valid  Form Information'
-          );
+        );
     }
 }
 if (isset($_POST["insert"]) && isset($_POST["name"]) && isset($_POST["price"]) && isset($_POST["description"])) {
@@ -47,20 +47,20 @@ if (isset($_POST["insert"]) && isset($_POST["name"]) && isset($_POST["price"]) &
                 'type' => 'Add Package',
                 'message' => 'Package Insert successfully',
                 'icon' => 'success'
-              );
+            );
         } else {
             $message[] = array(
                 'icon' => 'error',
                 'type' => 'Error',
                 'message' => 'Enter  valid  Form Information'
-              );
+            );
         }
     } else {
         $message[] = array(
             'icon' => 'error',
             'type' => 'Error',
             'message' => 'Enter  valid  Form Information'
-          );
+        );
     }
 }
 if (isset($_POST["delete"]) && isset($_POST["package_id"])) {
@@ -72,7 +72,7 @@ if (isset($_POST["delete"]) && isset($_POST["package_id"])) {
             'type' => 'Package Delete',
             'message' => 'Package delete successfully!',
             'icon' => 'success'
-          );
+        );
         $message[] = 'Package delete successfully!';
     }
 }
@@ -89,7 +89,8 @@ include "../alert_message.php";
                 <div class="card-body">
                     <div class="align-items-center d-flex justify-content-between">
                         <h3 class="my-3 float-start">Campaign Package Information</h3>
-                        <div class="btn btn-primary float-end" data-bs-toggle='modal' data-bs-target='#edit-package-modal'>Add
+                        <div class="btn btn-primary float-end" data-bs-toggle='modal'
+                            data-bs-target='#edit-package-modal'>Add
                             Package</div>
                     </div>
                     <!-- Table with stripped rows -->
@@ -110,7 +111,7 @@ include "../alert_message.php";
                                 $result = mysqli_query($conn, $query);
                                 $i = 1;
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                ?>
+                                    ?>
                                     <tr>
                                         <th scope='row'>
                                             <?= $i ?>
@@ -126,58 +127,76 @@ include "../alert_message.php";
                                         </td>
                                         <td>
                                             <form method="post" id='edit-form' class="m-0">
-                                                <input class='form-control' type='hidden' value="<?= $row["package_id"] ?>" name='package_id'>
-                                                <button class='btn btn-primary' type="button" data-bs-toggle='modal' data-bs-target='#edit-package-modal<?= $i ?>'><i class='bi bi-pencil'></i></button>
-                                                <button class='btn btn-danger' type="submit" name="delete"><i class='bi bi-trash'></i></button>
+                                                <input class='form-control' type='hidden' value="<?= $row["package_id"] ?>"
+                                                    name='package_id'>
+                                                <button class='btn btn-primary' type="button" data-bs-toggle='modal'
+                                                    data-bs-target='#edit-package-modal<?= $i ?>'><i
+                                                        class='bi bi-pencil'></i></button>
+                                                <button class='btn btn-danger' type="submit" name="delete"><i
+                                                        class='bi bi-trash'></i></button>
                                             </form>
                                         </td>
                                     </tr>
-                                    <div class='modal fade' id='edit-package-modal<?= $i ?>' tabindex='-1' style='display: none;' aria-hidden='true'>
+                                    <div class='modal fade' id='edit-package-modal<?= $i ?>' tabindex='-1'
+                                        style='display: none;' aria-hidden='true'>
                                         <div class='modal-dialog modal-dialog-centered'>
                                             <div class='modal-content'>
                                                 <div class='modal-header'>
                                                     <h5 class='modal-title'>Update Package(
                                                         <?= $row["name"] ?>)
                                                     </h5>
-                                                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                                    <button type='button' class='btn-close' data-bs-dismiss='modal'
+                                                        aria-label='Close'></button>
                                                 </div>
                                                 <form method="post" id='edit-form'>
                                                     <div class='modal-body'>
-                                                        <input class='form-control' value="<?= $row["package_id"] ?>" type='hidden' name='package_id'>
+                                                        <input class='form-control' value="<?= $row["package_id"] ?>"
+                                                            type='hidden' name='package_id'>
                                                         <div class='form-group row '>
                                                             <div class="col-4">
                                                                 <label for='full_name'>Package Name</label>
                                                             </div>
                                                             <div class="col-8">
-                                                                <input class='form-control' value="<?= $row["name"] ?>" type='text' name='name'>
+                                                                <input class='form-control' value="<?= $row["name"] ?>"
+                                                                    type='text' name='name'>
                                                             </div>
                                                         </div>
                                                         <div class='form-group row '>
                                                             <div class="col-4">
-                                                                <label for='Package_Price<?= $row["package_id"] ?>'>Package Price</label>
+                                                                <label for='Package_Price<?= $row["package_id"] ?>'>Package
+                                                                    Price</label>
                                                             </div>
                                                             <div class="col-8">
-                                                                <input class='form-control' id="Package_Price<?= $row["package_id"] ?>" value="<?= $row["price"] ?>" type='text' name='price'>
+                                                                <input class='form-control'
+                                                                    id="Package_Price<?= $row["package_id"] ?>"
+                                                                    value="<?= $row["price"] ?>" type='text' name='price'>
                                                             </div>
                                                         </div>
                                                         <div class='form-group row '>
                                                             <div class="col-4">
-                                                                <label for='package_description<?= $row["package_id"] ?>'>Package Description</label>
+                                                                <label
+                                                                    for='package_description<?= $row["package_id"] ?>'>Package
+                                                                    Description</label>
                                                             </div>
                                                             <div class="col-8">
-                                                                <input class='form-control' id="package_description<?= $row["package_id"] ?>" value="<?= $row["description"] ?>" type='text' name='description'>
+                                                                <input class='form-control'
+                                                                    id="package_description<?= $row["package_id"] ?>"
+                                                                    value="<?= $row["description"] ?>" type='text'
+                                                                    name='description'>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class='modal-footer'>
-                                                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                                                        <button type='submit' name="submit" class='btn btn-primary'>Save changes</button>
+                                                        <button type='button' class='btn btn-secondary'
+                                                            data-bs-dismiss='modal'>Close</button>
+                                                        <button type='submit' name="submit" class='btn btn-primary'>Save
+                                                            changes</button>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
-                                <?php
+                                    <?php
                                     $i++;
                                 }
                                 ?>
@@ -185,9 +204,9 @@ include "../alert_message.php";
                             </tbody>
                         </table>
                     </div>
-                    
+
                 </div>
-            </div> 
+            </div>
         </div>
         <div class='modal fade' id='edit-package-modal' style='display: none;' aria-hidden='true'>
             <div class='modal-dialog modal-dialog-centered'>
@@ -198,7 +217,7 @@ include "../alert_message.php";
                     </div>
                     <form method="post" id='edit-form'>
                         <div class='modal-body'>
-                            
+
                             <div class='form-group row'>
                                 <div class="col-4">
                                     <label for='package_Name'>Package Name</label>

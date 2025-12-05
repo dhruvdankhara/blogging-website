@@ -1,7 +1,6 @@
 <?php
 require_once("../connection.php");
 include "./sidebar.php";
-
 ?>
 
 <main id="main" class="main">

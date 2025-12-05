@@ -82,7 +82,6 @@ if (isset($_POST["sendMail"])) {
       $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
       $mail->Port = 587;
 
-      // SSL FIX for XAMPP
       $mail->SMTPOptions = [
         "ssl" => [
           "verify_peer" => false,

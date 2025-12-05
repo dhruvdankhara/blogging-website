@@ -116,12 +116,13 @@
                     </p>
                     <a href="single_post.php?post_id=<?= $post_id ?>">
                       <button class="btn btn-custom">
-                        <i class="las la-eye fs-4"></i>
+                        <i class="bi bi-eye fs-4"></i>
                       </button>
                     </a>
                     <form method="post" style="float:right;">
                       <input type="hidden" name="save_id" value="<?= $save_id ?>">
-                      <button class="btn" type="submit" name="delete" style="background: transparent; border: none; padding: 0;">
+                      <button class="btn" type="submit" name="delete"
+                        style="background: transparent; border: none; padding: 0;">
                         <i class="bi bi-bookmark-fill fs-4" style="color: #000000;"></i>
                       </button>
                     </form>
