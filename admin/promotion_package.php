@@ -7,12 +7,13 @@ if (isset($_POST["submit"]) && isset($_POST["name"]) && isset($_POST["package_id
     $name = $_POST["name"];
     $price = $_POST["price"];
     $description = $_POST["description"];
+    $days = isset($_POST["days"]) && $_POST["days"] ? $_POST["days"] : 1;
     if (
         $name &&
         $price &&
         $description
     ) {
-        $query = "update campaign_package set  name = '$name' , 	price = '$price' , description='$description'   where package_id = '$package_id'";
+        $query = "update campaign_package set  name = '$name' , price = '$price' , description='$description', total_days='$days' where package_id = '$package_id'";
         $runquery = mysqli_query($conn, $query);
         if ($runquery) {
             $message[] = array(
@@ -35,12 +36,13 @@ if (isset($_POST["insert"]) && isset($_POST["name"]) && isset($_POST["price"]) &
     $name = $_POST["name"];
     $price = $_POST["price"];
     $description = $_POST["description"];
+    $days = isset($_POST["days"]) && $_POST["days"] ? $_POST["days"] : 1;
     if (
         $name &&
         $price &&
         $description
     ) {
-        $query = "insert into campaign_package  (name , price , description) values('$name' , '$price' , '$description')";
+        $query = "insert into campaign_package  (name , price , description, total_days) values('$name' , '$price' , '$description', '$days')";
         $runquery = mysqli_query($conn, $query);
         if ($runquery) {
             $message[] = array(
@@ -100,6 +102,7 @@ include "../alert_message.php";
                                     <th scope="col">Sr No.</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Price</th>
+                                    <th scope="col">Days</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -120,6 +123,9 @@ include "../alert_message.php";
                                         </td>
                                         <td>
                                             <?= $row["price"] ?>
+                                        </td>
+                                        <td>
+                                            <?= (isset($row["total_days"]) && $row["total_days"] && $row["total_days"] > 0) ? $row["total_days"] : '-' ?>
                                         </td>
                                         <td>
                                             <?= $row["description"] ?>
@@ -158,6 +164,14 @@ include "../alert_message.php";
                                                             </div>
                                                             <div class="col-8">
                                                                 <input class='form-control' id="Package_Price<?= $row["package_id"] ?>" value="<?= $row["price"] ?>" type='text' name='price'>
+                                                            </div>
+                                                        </div>
+                                                        <div class='form-group row '>
+                                                            <div class="col-4">
+                                                                <label for='package_days<?= $row["package_id"] ?>'>Package Days</label>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <input class='form-control' id="package_days<?= $row["package_id"] ?>" value="<?= isset($row["total_days"]) ? $row["total_days"] : 1 ?>" type='number' name='days' min='1'>
                                                             </div>
                                                         </div>
                                                         <div class='form-group row '>
@@ -213,6 +227,14 @@ include "../alert_message.php";
                                 </div>
                                 <div class="col-8">
                                     <input class='form-control' id="package_price" type='text' name='price'>
+                                </div>
+                            </div>
+                            <div class='form-group row'>
+                                <div class="col-4">
+                                    <label for='package_days'>Package Days</label>
+                                </div>
+                                <div class="col-8">
+                                    <input class='form-control' id="package_days" type='number' name='days' min='1'>
                                 </div>
                             </div>
                             <div class='form-group row'>

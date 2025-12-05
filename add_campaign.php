@@ -101,7 +101,7 @@ include "./alert_message.php";
               $query = "Select * from campaign_package where package_id = $package_id ";
               $runquery = mysqli_query($conn, $query);
               $row = mysqli_fetch_assoc($runquery);
-              $total_days = $row['total_days'];
+              $total_days = isset($row['total_days']) && $row['total_days'] ? $row['total_days'] : 1;
               $total_amount = $row['price'];
               ?>
               <h2>
@@ -115,6 +115,9 @@ include "./alert_message.php";
                 <?= $row['description'] ?>
                 </h2>
                 </h4>
+              </h5>
+              <h5>
+                <i class="bi bi-calendar-check"></i> <?= $total_days ?> Days
               </h5>
             </div>
           </div>
