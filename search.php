@@ -74,7 +74,8 @@ $search_query = isset($_GET['q']) ? trim($_GET['q']) : '';
                 </div>
                 <div class="d-flex align-items-center gap-2 flex-shrink-0">
                   <div class="d-flex align-items-center">
-                    <div id="icon_<?= $post_id ?>" onclick="event.stopPropagation(); likePost(<?= $post_id ?>)" role="button" tabindex="0" style="cursor: pointer;">
+                    <div id="icon_<?= $post_id ?>" onclick="event.stopPropagation(); likePost(<?= $post_id ?>)" role="button"
+                      tabindex="0" style="cursor: pointer;">
                       <i class="bi <?= mysqli_num_rows($rq) == 0 ? 'bi-heart' : 'bi-heart-fill' ?> me-1"></i>
                     </div>
                     <small class="text-muted" id="likeCount_<?= $post_id ?>"><?= $like_count ?></small>
@@ -120,6 +121,4 @@ $search_query = isset($_GET['q']) ? trim($_GET['q']) : '';
 <?php endif; ?>
 </div>
 
-<script src="./vendor/swiper/swiper-bundle.min.js"></script>
-<script src="./vendor/js/main.js"></script>
 <script src="vendor/js/ajex-call.js"></script>

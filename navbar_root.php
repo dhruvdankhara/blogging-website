@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="./vendor/css/style.css">
 <link rel="stylesheet" href="./vendor/css/theme.css">
 <link rel="stylesheet" href="./vendor/css/main.css">
-<link rel="stylesheet" href="./vendor/swiper/swiper-bundle.min.css">
 <link rel="stylesheet" href="./vendor/css/theme.css?v=2.0">
 <script src="./vendor/js/main.js"></script>
 <link href="./lib/css/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">

@@ -166,8 +166,7 @@
                     <div class="d-flex align-items-center">
                       <div id="icon_<?= $post_id ?>" onclick="event.stopPropagation(); likePost(<?= $post_id ?>)"
                         class="me-1" role="button" tabindex="0">
-                        <i
-                          class="bi <?= mysqli_num_rows($rq) == 0 ? 'bi-heart' : 'bi-heart-fill' ?> fs-6"></i>
+                        <i class="bi <?= mysqli_num_rows($rq) == 0 ? 'bi-heart' : 'bi-heart-fill' ?> fs-6"></i>
                       </div>
                       <div id="likeCount_<?= $post_id ?>" class="small text-muted">
                         <?= $like_count ?>
@@ -190,7 +189,6 @@
   </section>
 </body>
 
-<script src="./vendor/swiper/swiper-bundle.min.js"></script>
 <script src="./vendor/js/main.js"></script>
 <script src="vendor/js/ajex-call.js"></script>
 
