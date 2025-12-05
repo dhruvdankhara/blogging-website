@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlogHive</title>
+  <title>BlogSphere</title>
   <link href="./lib/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./vendor/css/style.css">
   <link rel="stylesheet" href="./vendor/css/theme.css">

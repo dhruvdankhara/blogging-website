@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlogHive</title>
+  <title>BlogSphere</title>
   <link href="./lib/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./vendor/css/style.css">
   <link rel="stylesheet" href="./vendor/css/theme.css">
@@ -189,8 +189,7 @@
                 ?>
 
                 <div id="icon_<?= $post_id ?>" onclick="likePost(<?= $post_id ?>)">
-                  <i
-                    class="bi <?= mysqli_num_rows($rq) == 0 ? 'bi-heart' : 'bi-heart-fill' ?> fs-3"></i>&nbsp;
+                  <i class="bi <?= mysqli_num_rows($rq) == 0 ? 'bi-heart' : 'bi-heart-fill' ?> fs-3"></i>&nbsp;
                 </div>
 
                 <div id="likeCount_<?= $post_id ?>" class="me-2">
@@ -208,12 +207,14 @@
                 <form action="" method="POST">
                   <input type="hidden" name="post_id" value="<?= $post_id ?>">
                   <?php if ($is_saved) { ?>
-                    <button class="btn btn-sm ms-2" type="submit" name="unsave" style="background: transparent; border: none; padding: 0;">
+                    <button class="btn btn-sm ms-2" type="submit" name="unsave"
+                      style="background: transparent; border: none; padding: 0;">
                       <i class="bi bi-bookmark-fill fs-3" style="color: #000000;"></i>&nbsp;
                     </button>
 
                   <?php } else { ?>
-                    <button class="btn btn-sm ms-2" type="submit" name="save" style="background: transparent; border: none; padding: 0;">
+                    <button class="btn btn-sm ms-2" type="submit" name="save"
+                      style="background: transparent; border: none; padding: 0;">
                       <i class="bi bi-bookmark fs-3" style="color: #000000;"></i>&nbsp;
                     </button>
                   <?php } ?>
