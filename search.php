@@ -43,6 +43,11 @@ $search_query = isset($_GET['q']) ? trim($_GET['q']) : '';
         $author_name = $row["author_name"];
         $author_image = $row["author_image"];
 
+        // Check if current user has liked this post
+        $user_id = $_SESSION["user_id"];
+        $q = "SELECT * FROM likes WHERE post_id=$post_id AND user_id=$user_id";
+        $rq = mysqli_query($conn, $q);
+
         // Highlight search terms in title and content
         $highlighted_title = preg_replace('/(' . preg_quote($search_query, '/') . ')/i', '<span class="search-highlight">$1</span>', htmlspecialchars($title));
         $highlighted_content = preg_replace('/(' . preg_quote($search_query, '/') . ')/i', '<span class="search-highlight">$1</span>', htmlspecialchars(mb_strimwidth(strip_tags($content), 0, 150, '...')));
@@ -69,8 +74,10 @@ $search_query = isset($_GET['q']) ? trim($_GET['q']) : '';
                 </div>
                 <div class="d-flex align-items-center gap-2 flex-shrink-0">
                   <div class="d-flex align-items-center">
-                    <i class="bi bi-heart me-1"></i>
-                    <small class="text-muted"><?= $like_count ?></small>
+                    <div id="icon_<?= $post_id ?>" onclick="event.stopPropagation(); likePost(<?= $post_id ?>)" role="button" tabindex="0" style="cursor: pointer;">
+                      <i class="bi <?= mysqli_num_rows($rq) == 0 ? 'bi-heart' : 'bi-heart-fill' ?> me-1"></i>
+                    </div>
+                    <small class="text-muted" id="likeCount_<?= $post_id ?>"><?= $like_count ?></small>
                   </div>
                   <div class="small text-muted d-flex align-items-center">
                     <i class="bi bi-chat-dots me-1"></i><?= $comment_count ?>
