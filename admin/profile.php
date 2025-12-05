@@ -10,7 +10,6 @@
 
 <body>
     <?php
-    require_once("../connection.php");
     include "./sidebar.php";
 
     // Handle Profile Details Update (Name & Email only)
@@ -171,13 +170,13 @@
             );
         }
     }
+
     include "../alert_message.php";
     ?>
 
     <main class="container-fluid py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="h3 mb-0 text-gray-800">Admin Profile</h1>
-            <small class="text-muted">Manage your account settings</small>
         </div>
 
         <div class="row g-4">

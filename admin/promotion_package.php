@@ -1,6 +1,7 @@
 <?php
 include "../connection.php";
 include "./sidebar.php";
+
 if (isset($_POST["submit"]) && isset($_POST["name"]) && isset($_POST["package_id"]) && isset($_POST["price"]) && isset($_POST["description"])) {
 
     $package_id = $_POST["package_id"];
@@ -31,8 +32,8 @@ if (isset($_POST["submit"]) && isset($_POST["name"]) && isset($_POST["package_id
         );
     }
 }
-if (isset($_POST["insert"]) && isset($_POST["name"]) && isset($_POST["price"]) && isset($_POST["description"])) {
 
+if (isset($_POST["insert"]) && isset($_POST["name"]) && isset($_POST["price"]) && isset($_POST["description"])) {
     $name = $_POST["name"];
     $price = $_POST["price"];
     $description = $_POST["description"];
@@ -65,6 +66,7 @@ if (isset($_POST["insert"]) && isset($_POST["name"]) && isset($_POST["price"]) &
         );
     }
 }
+
 if (isset($_POST["delete"]) && isset($_POST["package_id"])) {
     $package_id = $_POST["package_id"];
     $query = "delete from campaign_package  where package_id = '$package_id'";
@@ -78,7 +80,6 @@ if (isset($_POST["delete"]) && isset($_POST["package_id"])) {
         $message[] = 'Package delete successfully!';
     }
 }
-
 
 include "../alert_message.php";
 
@@ -95,7 +96,7 @@ include "../alert_message.php";
                             data-bs-target='#edit-package-modal'>Add
                             Package</div>
                     </div>
-                    <!-- Table with stripped rows -->
+
                     <div class="table-responsive">
                         <table class="table table-striped text-center">
                             <thead>
@@ -115,7 +116,7 @@ include "../alert_message.php";
                                 $i = 1;
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     ?>
-                                    <tr>
+                                    <tr class="align-middle">
                                         <th scope='row'>
                                             <?= $i ?>
                                         </th>
@@ -132,7 +133,7 @@ include "../alert_message.php";
                                             <?= $row["description"] ?>
                                         </td>
                                         <td>
-                                            <form method="post" id='edit-form' class="m-0">
+                                            <form method="post" id='edit-form' class="m-2">
                                                 <input class='form-control' type='hidden' value="<?= $row["package_id"] ?>"
                                                     name='package_id'>
                                                 <button class='btn btn-primary' type="button" data-bs-toggle='modal'
@@ -143,6 +144,7 @@ include "../alert_message.php";
                                             </form>
                                         </td>
                                     </tr>
+
                                     <div class='modal fade' id='edit-package-modal<?= $i ?>' tabindex='-1'
                                         style='display: none;' aria-hidden='true'>
                                         <div class='modal-dialog modal-dialog-centered'>
@@ -226,6 +228,7 @@ include "../alert_message.php";
                 </div>
             </div>
         </div>
+
         <div class='modal fade' id='edit-package-modal' style='display: none;' aria-hidden='true'>
             <div class='modal-dialog modal-dialog-centered'>
                 <div class='modal-content'>
